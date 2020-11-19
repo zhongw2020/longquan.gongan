@@ -25,7 +25,15 @@ const routes: Routes = [
 			{ path: "identity", loadChildren: () => import("./identity/identity.module").then((m) => m.IdentityModule) },
 			{ path: "auth", loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule) },
 			{ path: "systems", loadChildren: () => import("./systems/systems.module").then((m) => m.SystemsModule) },
-			{
+
+      {
+        path: "base-data",
+        loadChildren: () => import("./base-data/base-data.module").then((m) => m.BaseDataModule),
+        canActivateChild: [ACLGuard],
+        data: { guard: "Root.Admin.BaseData" }
+      },
+
+      {
 				path: "infos",
 				loadChildren: () => import("./infos/infos.module").then((m) => m.InfosModule),
 				canActivateChild: [ ACLGuard ],

@@ -17,6 +17,9 @@ import { BaseDataRoutingModule } from './base-data.routing';
 import { BaseStaffComponent } from './base-staff/base-staff.component';
 import { BaseDeptComponent } from './base-dept/base-dept.component';
 import { BaseStoreComponent } from './base-store/base-store.component';
+import { BaseKindComponent } from './base-kind/base-kind.component';
+import { BaseMatComponent } from './base-mat/base-mat.component';
+import { BaseSupComponent } from './base-sup/base-sup.component';
 
 @NgModule({
   imports: [
@@ -28,6 +31,9 @@ import { BaseStoreComponent } from './base-store/base-store.component';
     BaseStaffComponent,
     BaseDeptComponent,
     BaseStoreComponent,
+    BaseKindComponent,
+    BaseMatComponent,
+    BaseSupComponent,
   ]
 })
 export class BaseDataModule { }
