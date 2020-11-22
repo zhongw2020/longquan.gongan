@@ -48,9 +48,12 @@ namespace longquan.gongan.BaseData.Dtos
             No = entity.No;
             Name = entity.Name;
             Kinds = entity.Kinds;
-            standards = entity.standards;
+            Standards = entity.Standards;
             Brand = entity.Brand;
             State = entity.State;
+            Safe_Num = entity.Safe_Num;
+            Max_Num = entity.Max_Num;
+            Min_Num = entity.Min_Num;
             Other = entity.Other;
             CreatedTime = entity.CreatedTime;
         }
@@ -83,7 +86,7 @@ namespace longquan.gongan.BaseData.Dtos
         /// 获取或设置 规格
         /// </summary>
         [DisplayName("规格")]
-        public string standards { get; set; }
+        public string Standards { get; set; }
 
         /// <summary>
         /// 获取或设置 品牌
@@ -96,6 +99,24 @@ namespace longquan.gongan.BaseData.Dtos
         /// </summary>
         [DisplayName("状态")]
         public bool State { get; set; }
+
+        /// <summary>
+        /// 获取或设置 安全库存
+        /// </summary>
+        [DisplayName("安全库存")]
+        public double Safe_Num { get; set; }
+
+        /// <summary>
+        /// 获取或设置 最大库存
+        /// </summary>
+        [DisplayName("最大库存")]
+        public double Max_Num { get; set; }
+
+        /// <summary>
+        /// 获取或设置 最小库存
+        /// </summary>
+        [DisplayName("最小库存")]
+        public double Min_Num { get; set; }
 
         /// <summary>
         /// 获取或设置 其他

@@ -46,6 +46,7 @@ namespace longquan.gongan.BaseData.Dtos
         {
             Id = entity.Id;
             Name = entity.Name;
+            No = entity.No;
             State = entity.State;
             Other = entity.Other;
             CreatedTime = entity.CreatedTime;
@@ -62,6 +63,12 @@ namespace longquan.gongan.BaseData.Dtos
         /// </summary>
         [DisplayName("供应商名称")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// 获取或设置 供应商编码
+        /// </summary>
+        [DisplayName("供应商编码")]
+        public string No { get; set; }
 
         /// <summary>
         /// 获取或设置 状态

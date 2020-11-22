@@ -4,7 +4,10 @@
 { path: 'base-data', loadChildren: () => import('./base-data/base-data.module').then(m => m.BaseDataModule), canActivateChild: [ACLGuard], data: { guard: 'Root.Admin.BaseData' } },
 
 各模块组件路由：
- 模块组件路由数据
+基础数据 模块组件路由数据
+{ path: 'base-staff', component: BaseStaffComponent, canActivate: [ACLGuard], data: { title: '人员数据管理', reuse: true, guard: 'Root.Admin.BaseData.BaseStaff.Read' } },
+{ path: 'base-dept', component: BaseDeptComponent, canActivate: [ACLGuard], data: { title: '部门数据管理', reuse: true, guard: 'Root.Admin.BaseData.BaseDept.Read' } },
+{ path: 'base-store', component: BaseStoreComponent, canActivate: [ACLGuard], data: { title: '仓库数据管理', reuse: true, guard: 'Root.Admin.BaseData.BaseStore.Read' } },
 { path: 'base-sup', component: BaseSupComponent, canActivate: [ACLGuard], data: { title: '供应商数据管理', reuse: true, guard: 'Root.Admin.BaseData.BaseSup.Read' } },
 { path: 'base-kind', component: BaseKindComponent, canActivate: [ACLGuard], data: { title: '分类数据管理', reuse: true, guard: 'Root.Admin.BaseData.BaseKind.Read' } },
 { path: 'base-mat', component: BaseMatComponent, canActivate: [ACLGuard], data: { title: '物品数据管理', reuse: true, guard: 'Root.Admin.BaseData.BaseMat.Read' } },
@@ -12,13 +15,25 @@
 
 
 各模块菜单数据：
- 模块菜单数据
+基础数据 模块菜单数据
 {
-  "text": "模块",
+  "text": "基础数据模块",
   "group": "true",
   "icon": "anticon-border",
   "acl": "Root.Admin.BaseData",
   "children": [{
+    "text": "人员数据管理",
+    "link": "/base-data/base-staff",
+    "acl": "Root.Admin.BaseData.BaseStaff"
+  }, {
+    "text": "部门数据管理",
+    "link": "/base-data/base-dept",
+    "acl": "Root.Admin.BaseData.BaseDept"
+  }, {
+    "text": "仓库数据管理",
+    "link": "/base-data/base-store",
+    "acl": "Root.Admin.BaseData.BaseStore"
+  }, {
     "text": "供应商数据管理",
     "link": "/base-data/base-sup",
     "acl": "Root.Admin.BaseData.BaseSup"

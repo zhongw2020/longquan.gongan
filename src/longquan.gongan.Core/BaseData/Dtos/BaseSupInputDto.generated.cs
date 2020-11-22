@@ -47,6 +47,12 @@ namespace longquan.gongan.BaseData.Dtos
         public string Name { get; set; }
 
         /// <summary>
+        /// 获取或设置 供应商编码
+        /// </summary>
+        [DisplayName("供应商编码")]
+        public string No { get; set; }
+
+        /// <summary>
         /// 获取或设置 状态
         /// </summary>
         [DisplayName("状态")]

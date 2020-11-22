@@ -44,7 +44,7 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
     /// <summary>
     /// 管理控制器基类: 物品数据信息
     /// </summary>
-    [ModuleInfo(Position = "BaseData", PositionName = "模块")]
+    [ModuleInfo(Position = "BaseData", PositionName = "基础数据模块")]
     [Description("管理-物品数据信息")]
     public abstract class BaseMatControllerBase : AdminApiController
     {
@@ -64,7 +64,7 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
         protected IFilterService FilterService { get; }
 
         /// <summary>
-        /// 获取或设置 模块业务契约对象
+        /// 获取或设置 基础数据模块业务契约对象
         /// </summary>
         protected IBaseDataContract BaseDataContract { get; }
         

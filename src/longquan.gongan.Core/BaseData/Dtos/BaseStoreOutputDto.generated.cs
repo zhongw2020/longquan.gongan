@@ -50,6 +50,7 @@ namespace longquan.gongan.BaseData.Dtos
             Manager = entity.Manager;
             State = entity.State;
             Other = entity.Other;
+            No = entity.No;
             CreatedTime = entity.CreatedTime;
         }
 
@@ -88,6 +89,12 @@ namespace longquan.gongan.BaseData.Dtos
         /// </summary>
         [DisplayName("其他")]
         public string Other { get; set; }
+
+        /// <summary>
+        /// 获取或设置 仓库编码
+        /// </summary>
+        [DisplayName("仓库编码")]
+        public string No { get; set; }
 
         /// <summary>
         /// 获取或设置 创建时间

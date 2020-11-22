@@ -43,7 +43,7 @@ namespace longquan.gongan.BaseData.Dtos
         /// <summary>
         /// 获取或设置 资产编号
         /// </summary>
-        [DisplayName("资产编号")]
+        [DisplayName("资产编号"), Required]
         public string No { get; set; }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace longquan.gongan.BaseData.Dtos
         /// 获取或设置 规格
         /// </summary>
         [DisplayName("规格")]
-        public string standards { get; set; }
+        public string Standards { get; set; }
 
         /// <summary>
         /// 获取或设置 品牌
@@ -75,6 +75,24 @@ namespace longquan.gongan.BaseData.Dtos
         /// </summary>
         [DisplayName("状态")]
         public bool State { get; set; }
+
+        /// <summary>
+        /// 获取或设置 安全库存
+        /// </summary>
+        [DisplayName("安全库存")]
+        public double Safe_Num { get; set; }
+
+        /// <summary>
+        /// 获取或设置 最大库存
+        /// </summary>
+        [DisplayName("最大库存")]
+        public double Max_Num { get; set; }
+
+        /// <summary>
+        /// 获取或设置 最小库存
+        /// </summary>
+        [DisplayName("最小库存")]
+        public double Min_Num { get; set; }
 
         /// <summary>
         /// 获取或设置 其他

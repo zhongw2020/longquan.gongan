@@ -34,7 +34,7 @@ using longquan.gongan.BaseData.Entities;
 namespace longquan.gongan.BaseData
 {
     /// <summary>
-    /// 业务实现基类：模块
+    /// 业务实现基类：基础数据模块
     /// </summary>
     public abstract partial class BaseDataServiceBase : IBaseDataContract
     {
@@ -60,6 +60,21 @@ namespace longquan.gongan.BaseData
         protected ILogger Logger { get; }
 
         /// <summary>
+        /// 获取或设置 人员数据信息仓储对象
+        /// </summary>
+        protected IRepository<BaseStaff, int> BaseStaffRepository => ServiceProvider.GetService<IRepository<BaseStaff, int>>();
+        
+        /// <summary>
+        /// 获取或设置 部门数据信息仓储对象
+        /// </summary>
+        protected IRepository<BaseDept, int> BaseDeptRepository => ServiceProvider.GetService<IRepository<BaseDept, int>>();
+        
+        /// <summary>
+        /// 获取或设置 仓库数据信息仓储对象
+        /// </summary>
+        protected IRepository<BaseStore, int> BaseStoreRepository => ServiceProvider.GetService<IRepository<BaseStore, int>>();
+        
+        /// <summary>
         /// 获取或设置 供应商数据信息仓储对象
         /// </summary>
         protected IRepository<BaseSup, int> BaseSupRepository => ServiceProvider.GetService<IRepository<BaseSup, int>>();
@@ -73,22 +88,7 @@ namespace longquan.gongan.BaseData
         /// 获取或设置 物品数据信息仓储对象
         /// </summary>
         protected IRepository<BaseMat, int> BaseMatRepository => ServiceProvider.GetService<IRepository<BaseMat, int>>();
-
-        /// <summary>
-        /// 获取或设置 部门数据信息仓储对象
-        /// </summary>
-        protected IRepository<BaseDept, int> BaseDeptRepository => ServiceProvider.GetService<IRepository<BaseDept, int>>();
-
-        /// <summary>
-        /// 获取或设置 人员数据信息仓储对象
-        /// </summary>
-        protected IRepository<BaseStaff, int> BaseStaffRepository => ServiceProvider.GetService<IRepository<BaseStaff, int>>();
-
-        /// <summary>
-        /// 获取或设置 仓库数据信息仓储对象
-        /// </summary>
-        protected IRepository<BaseStore, int> BaseStoreRepository => ServiceProvider.GetService<IRepository<BaseStore, int>>();
-
+        
         /// <summary>
         /// 获取 事件总线
         /// </summary>

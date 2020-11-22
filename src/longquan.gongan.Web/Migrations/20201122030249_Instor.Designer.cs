@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OSharp.Entity;
 
 namespace longquan.gongan.Web.Migrations
 {
     [DbContext(typeof(DefaultDbContext))]
-    partial class DefaultDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201122030249_Instor")]
+    partial class Instor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -319,9 +321,6 @@ namespace longquan.gongan.Web.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("No")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Other")
                         .HasColumnType("nvarchar(max)");
 
@@ -373,36 +372,23 @@ namespace longquan.gongan.Web.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Kinds")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Max_Num")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Min_Num")
-                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("No")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Other")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Safe_Num")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Standards")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("State")
                         .HasColumnType("bit");
+
+                    b.Property<string>("standards")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -467,9 +453,6 @@ namespace longquan.gongan.Web.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("No")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Other")
                         .HasColumnType("nvarchar(max)");
 
@@ -495,9 +478,6 @@ namespace longquan.gongan.Web.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("No")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Other")
@@ -888,12 +868,6 @@ namespace longquan.gongan.Web.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CreatorId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Curr_Num")
-                        .HasColumnType("float");
-
                     b.Property<DateTime?>("DeletedTime")
                         .HasColumnType("datetime2");
 
@@ -910,23 +884,11 @@ namespace longquan.gongan.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("In_Num")
-                        .HasColumnType("float");
-
                     b.Property<DateTime>("InaccountDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("LastUpdatedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("LastUpdaterId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ManagerdepartmentNo")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ManufactureDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("MatNo")
                         .HasColumnType("nvarchar(max)");
@@ -957,9 +919,6 @@ namespace longquan.gongan.Web.Migrations
 
                     b.Property<string>("ValueType")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("WarrantyPeriod")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -1092,55 +1051,6 @@ namespace longquan.gongan.Web.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Infos_MessageReply");
-                });
-
-            modelBuilder.Entity("longquan.gongan.OutStor.Entities.AssetCollection", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("ColDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ColDeptno")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ColMatno")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ColNumber")
-                        .HasColumnType("float");
-
-                    b.Property<string>("ColStaffno")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ColVoucher")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CreatorId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastUpdatedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("LastUpdaterId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Other")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OutStor_AssetCollection");
                 });
 
             modelBuilder.Entity("longquan.gongan.Systems.Entities.AuditEntity", b =>

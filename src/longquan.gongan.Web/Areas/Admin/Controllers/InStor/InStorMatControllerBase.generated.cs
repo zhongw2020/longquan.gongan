@@ -4,11 +4,11 @@
 //    手动更改此文件可能导致应用程序出现意外的行为。
 //    如果重新生成代码，对此文件的任何修改都会丢失。
 //    如果需要扩展此类，可以遵守如下规则进行扩展：
-//      1.横向扩展：如需给当前控制器添加API，请在控制器类型 BaseKindController.cs 进行添加
-//      2.纵向扩展：如需要重写当前控制器的API实现，请在控制器类型 BaseKindController.cs 进行继承重写
+//      1.横向扩展：如需给当前控制器添加API，请在控制器类型 InStorMatController.cs 进行添加
+//      2.纵向扩展：如需要重写当前控制器的API实现，请在控制器类型 InStorMatController.cs 进行继承重写
 // </auto-generated>
 //
-//  <copyright file="BaseKindBase.generated.cs" company="longquan.gongan">
+//  <copyright file="InStorMatBase.generated.cs" company="longquan.gongan">
 //      longquan.gongan
 //  </copyright>
 //  <site>http://longquan.gongan</site>
@@ -34,27 +34,27 @@ using OSharp.Entity;
 using OSharp.Filter;
 using OSharp.Security;
 
-using longquan.gongan.BaseData;
-using longquan.gongan.BaseData.Dtos;
-using longquan.gongan.BaseData.Entities;
+using longquan.gongan.InStor;
+using longquan.gongan.InStor.Dtos;
+using longquan.gongan.InStor.Entities;
 
 
 namespace longquan.gongan.Web.Areas.Admin.Controllers
 {
     /// <summary>
-    /// 管理控制器基类: 分类数据信息
+    /// 管理控制器基类: 资产入库信息
     /// </summary>
-    [ModuleInfo(Position = "BaseData", PositionName = "基础数据模块")]
-    [Description("管理-分类数据信息")]
-    public abstract class BaseKindControllerBase : AdminApiController
+    [ModuleInfo(Position = "InStor", PositionName = "模块")]
+    [Description("管理-资产入库信息")]
+    public abstract class InStorMatControllerBase : AdminApiController
     {
         /// <summary>
-        /// 初始化一个<see cref="BaseKindController"/>类型的新实例
+        /// 初始化一个<see cref="InStorMatController"/>类型的新实例
         /// </summary>
-        protected BaseKindControllerBase(IBaseDataContract baseDataContract,
+        protected InStorMatControllerBase(IInStorContract inStorContract,
             IFilterService filterService)
         {
-            BaseDataContract = baseDataContract;
+            InStorContract = inStorContract;
             FilterService = filterService;
         }
 
@@ -64,66 +64,66 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
         protected IFilterService FilterService { get; }
 
         /// <summary>
-        /// 获取或设置 基础数据模块业务契约对象
+        /// 获取或设置 模块业务契约对象
         /// </summary>
-        protected IBaseDataContract BaseDataContract { get; }
+        protected IInStorContract InStorContract { get; }
         
         /// <summary>
-        /// 读取分类数据列表信息
+        /// 读取资产入库列表信息
         /// </summary>
         /// <param name="request">页请求信息</param>
-        /// <returns>分类数据列表分页信息</returns>
+        /// <returns>资产入库列表分页信息</returns>
         [HttpPost]
         [ModuleInfo]
         [Description("读取")]
-        public virtual PageData<BaseKindOutputDto> Read(PageRequest request)
+        public virtual PageData<InStorMatOutputDto> Read(PageRequest request)
         {
             Check.NotNull(request, nameof(request));
 
-            Expression<Func<BaseKind, bool>> predicate = FilterService.GetExpression<BaseKind>(request.FilterGroup);
-            var page = BaseDataContract.BaseKinds.ToPage<BaseKind, BaseKindOutputDto>(predicate, request.PageCondition);
+            Expression<Func<InStorMat, bool>> predicate = FilterService.GetExpression<InStorMat>(request.FilterGroup);
+            var page = InStorContract.InStorMats.ToPage<InStorMat, InStorMatOutputDto>(predicate, request.PageCondition);
 
             return page.ToPageData();
         }
         
         /// <summary>
-        /// 新增分类数据信息
+        /// 新增资产入库信息
         /// </summary>
-        /// <param name="dtos">分类数据信息输入DTO</param>
+        /// <param name="dtos">资产入库信息输入DTO</param>
         /// <returns>JSON操作结果</returns>
         [HttpPost]
         [ModuleInfo]
         [DependOnFunction("Read")]
         [ServiceFilter(typeof(UnitOfWorkAttribute))]
         [Description("新增")]
-        public virtual async Task<AjaxResult> Create(BaseKindInputDto[] dtos)
+        public virtual async Task<AjaxResult> Create(InStorMatInputDto[] dtos)
         {
             Check.NotNull(dtos, nameof(dtos));
-            OperationResult result = await BaseDataContract.CreateBaseKinds(dtos);
+            OperationResult result = await InStorContract.CreateInStorMats(dtos);
             return result.ToAjaxResult();
         }
         
         /// <summary>
-        /// 更新分类数据信息
+        /// 更新资产入库信息
         /// </summary>
-        /// <param name="dtos">分类数据信息输入DTO</param>
+        /// <param name="dtos">资产入库信息输入DTO</param>
         /// <returns>JSON操作结果</returns>
         [HttpPost]
         [ModuleInfo]
         [DependOnFunction("Read")]
         [ServiceFilter(typeof(UnitOfWorkAttribute))]
         [Description("更新")]
-        public virtual async Task<AjaxResult> Update(BaseKindInputDto[] dtos)
+        public virtual async Task<AjaxResult> Update(InStorMatInputDto[] dtos)
         {
             Check.NotNull(dtos, nameof(dtos));
-            OperationResult result = await BaseDataContract.UpdateBaseKinds(dtos);
+            OperationResult result = await InStorContract.UpdateInStorMats(dtos);
             return result.ToAjaxResult();
         }
         
         /// <summary>
-        /// 删除分类数据信息
+        /// 删除资产入库信息
         /// </summary>
-        /// <param name="ids">分类数据信息编号</param>
+        /// <param name="ids">资产入库信息编号</param>
         /// <returns>JSON操作结果</returns>
         [HttpPost]
         [ModuleInfo]
@@ -133,7 +133,7 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
         public virtual async Task<AjaxResult> Delete(int[] ids)
         {
             Check.NotNull(ids, nameof(ids));
-            OperationResult result = await BaseDataContract.DeleteBaseKinds(ids);
+            OperationResult result = await InStorContract.DeleteInStorMats(ids);
             return result.ToAjaxResult();
         }
     }

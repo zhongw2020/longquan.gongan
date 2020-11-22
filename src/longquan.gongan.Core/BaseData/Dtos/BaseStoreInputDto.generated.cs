@@ -70,5 +70,11 @@ namespace longquan.gongan.BaseData.Dtos
         [DisplayName("其他")]
         public string Other { get; set; }
 
+        /// <summary>
+        /// 获取或设置 仓库编码
+        /// </summary>
+        [DisplayName("仓库编码")]
+        public string No { get; set; }
+
     }
 }

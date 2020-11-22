@@ -69,7 +69,113 @@
       ]
     },
 
+    {
+      "text": "资产入库",
+      "i18n": "menu.nav.business",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "资产入库",
+          "group": "true",
+          "icon": "anticon-mail",
+          "acl": "Root.Admin.BaseData",
+          "children": [
+            {
+              "text": "采购入库",
+              "link": "/base-data/base-staff",
+              "acl": "Root.Admin.BaseData.BaseStaff"
+            },
+            {
+              "text": "采购退库",
+              "link": "/base-data/base-dept",
+              "acl": "Root.Admin.BaseData.BaseDept"
+            }
+          ]
+        }
 
+      ]
+    },
+
+
+    {
+      "text": "资产出库",
+      "i18n": "menu.nav.business",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "资产出库",
+          "group": "true",
+          "icon": "anticon-mail",
+          "acl": "Root.Admin.BaseData",
+          "children": [
+            {
+              "text": "领用出库",
+              "link": "/base-data/base-staff",
+              "acl": "Root.Admin.BaseData.BaseStaff"
+            },
+            {
+              "text": "资产报废",
+              "link": "/base-data/base-dept",
+              "acl": "Root.Admin.BaseData.BaseDept"
+            },
+            {
+              "text": "调拨移库",
+              "link": "/base-data/base-store",
+              "acl": "Root.Admin.BaseData.BaseStore"
+            },
+            {
+              "text": "领用退库",
+              "link": "/base-data/base-sup",
+              "acl": "Root.Admin.BaseData.BaseSup"
+            }
+          ]
+        }
+
+      ]
+    },
+
+
+    {
+      "text": "报表管理",
+      "i18n": "menu.nav.business",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "报表管理",
+          "group": "true",
+          "icon": "anticon-mail",
+          "acl": "Root.Admin.BaseData",
+          "children": [
+            {
+              "text": "安全库存告警",
+              "link": "/base-data/base-staff",
+              "acl": "Root.Admin.BaseData.BaseStaff"
+            },
+            {
+              "text": "质保期告警",
+              "link": "/base-data/base-dept",
+              "acl": "Root.Admin.BaseData.BaseDept"
+            },
+            {
+              "text": "统计查询",
+              "link": "/base-data/base-store",
+              "acl": "Root.Admin.BaseData.BaseStore"
+            },
+            {
+              "text": "资产盘点",
+              "link": "/base-data/base-store",
+              "acl": "Root.Admin.BaseData.BaseStore"
+            }
+
+            
+          ]
+        }
+
+      ]
+    },
 
 
     {

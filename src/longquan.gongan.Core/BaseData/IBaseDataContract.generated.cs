@@ -29,10 +29,127 @@ using longquan.gongan.BaseData.Entities;
 namespace longquan.gongan.BaseData
 {
     /// <summary>
-    /// 业务契约接口：模块
+    /// 业务契约接口：基础数据模块
     /// </summary>
     public partial interface IBaseDataContract
     {
+        #region 人员数据信息业务
+
+        /// <summary>
+        /// 获取 人员数据信息查询数据集
+        /// </summary>
+        IQueryable<BaseStaff> BaseStaffs { get; }
+
+        /// <summary>
+        /// 检查人员数据信息信息是否存在
+        /// </summary>
+        /// <param name="predicate">检查谓语表达式</param>
+        /// <param name="id">更新的人员数据信息编号</param>
+        /// <returns>人员数据信息是否存在</returns>
+        Task<bool> CheckBaseStaffExists(Expression<Func<BaseStaff, bool>> predicate, int id = default(int));
+        
+        /// <summary>
+        /// 添加人员数据信息信息
+        /// </summary>
+        /// <param name="dtos">要添加的人员数据信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> CreateBaseStaffs(params BaseStaffInputDto[] dtos);
+            
+        /// <summary>
+        /// 更新人员数据信息信息
+        /// </summary>
+        /// <param name="dtos">包含更新信息的人员数据信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> UpdateBaseStaffs(params BaseStaffInputDto[] dtos);
+            
+        /// <summary>
+        /// 删除人员数据信息信息
+        /// </summary>
+        /// <param name="ids">要删除的人员数据信息编号</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> DeleteBaseStaffs(params int[] ids);
+        
+
+        #endregion
+        
+        #region 部门数据信息业务
+
+        /// <summary>
+        /// 获取 部门数据信息查询数据集
+        /// </summary>
+        IQueryable<BaseDept> BaseDepts { get; }
+
+        /// <summary>
+        /// 检查部门数据信息信息是否存在
+        /// </summary>
+        /// <param name="predicate">检查谓语表达式</param>
+        /// <param name="id">更新的部门数据信息编号</param>
+        /// <returns>部门数据信息是否存在</returns>
+        Task<bool> CheckBaseDeptExists(Expression<Func<BaseDept, bool>> predicate, int id = default(int));
+        
+        /// <summary>
+        /// 添加部门数据信息信息
+        /// </summary>
+        /// <param name="dtos">要添加的部门数据信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> CreateBaseDepts(params BaseDeptInputDto[] dtos);
+            
+        /// <summary>
+        /// 更新部门数据信息信息
+        /// </summary>
+        /// <param name="dtos">包含更新信息的部门数据信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> UpdateBaseDepts(params BaseDeptInputDto[] dtos);
+            
+        /// <summary>
+        /// 删除部门数据信息信息
+        /// </summary>
+        /// <param name="ids">要删除的部门数据信息编号</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> DeleteBaseDepts(params int[] ids);
+        
+
+        #endregion
+        
+        #region 仓库数据信息业务
+
+        /// <summary>
+        /// 获取 仓库数据信息查询数据集
+        /// </summary>
+        IQueryable<BaseStore> BaseStores { get; }
+
+        /// <summary>
+        /// 检查仓库数据信息信息是否存在
+        /// </summary>
+        /// <param name="predicate">检查谓语表达式</param>
+        /// <param name="id">更新的仓库数据信息编号</param>
+        /// <returns>仓库数据信息是否存在</returns>
+        Task<bool> CheckBaseStoreExists(Expression<Func<BaseStore, bool>> predicate, int id = default(int));
+        
+        /// <summary>
+        /// 添加仓库数据信息信息
+        /// </summary>
+        /// <param name="dtos">要添加的仓库数据信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> CreateBaseStores(params BaseStoreInputDto[] dtos);
+            
+        /// <summary>
+        /// 更新仓库数据信息信息
+        /// </summary>
+        /// <param name="dtos">包含更新信息的仓库数据信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> UpdateBaseStores(params BaseStoreInputDto[] dtos);
+            
+        /// <summary>
+        /// 删除仓库数据信息信息
+        /// </summary>
+        /// <param name="ids">要删除的仓库数据信息编号</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> DeleteBaseStores(params int[] ids);
+        
+
+        #endregion
+        
         #region 供应商数据信息业务
 
         /// <summary>
@@ -146,126 +263,9 @@ namespace longquan.gongan.BaseData
         /// <param name="ids">要删除的物品数据信息编号</param>
         /// <returns>业务操作结果</returns>
         Task<OperationResult> DeleteBaseMats(params int[] ids);
-
-
-        #endregion
-
-        #region 仓库数据信息业务
-
-        /// <summary>
-        /// 获取 物品数据信息查询数据集
-        /// </summary>
-        IQueryable<BaseStore> BaseStores { get; }
-
-        /// <summary>
-        /// 检查物品数据信息信息是否存在
-        /// </summary>
-        /// <param name="predicate">检查谓语表达式</param>
-        /// <param name="id">更新的物品数据信息编号</param>
-        /// <returns>物品数据信息是否存在</returns>
-        Task<bool> CheckBaseStoreExists(Expression<Func<BaseStore, bool>> predicate, int id = default(int));
-
-        /// <summary>
-        /// 添加物品数据信息信息
-        /// </summary>
-        /// <param name="dtos">要添加的物品数据信息DTO信息</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> CreateBaseStores(params BaseStoreInputDto[] dtos);
-
-        /// <summary>
-        /// 更新物品数据信息信息
-        /// </summary>
-        /// <param name="dtos">包含更新信息的物品数据信息DTO信息</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> UpdateBaseStores(params BaseStoreInputDto[] dtos);
-
-        /// <summary>
-        /// 删除物品数据信息信息
-        /// </summary>
-        /// <param name="ids">要删除的物品数据信息编号</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> DeleteBaseStores(params int[] ids);
-
+        
 
         #endregion
-
-        #region 部门数据信息业务
-
-        /// <summary>
-        /// 获取 物品数据信息查询数据集
-        /// </summary>
-        IQueryable<BaseDept> BaseDepts { get; }
-
-        /// <summary>
-        /// 检查物品数据信息信息是否存在
-        /// </summary>
-        /// <param name="predicate">检查谓语表达式</param>
-        /// <param name="id">更新的物品数据信息编号</param>
-        /// <returns>物品数据信息是否存在</returns>
-        Task<bool> CheckBaseDeptExists(Expression<Func<BaseDept, bool>> predicate, int id = default(int));
-
-        /// <summary>
-        /// 添加物品数据信息信息
-        /// </summary>
-        /// <param name="dtos">要添加的物品数据信息DTO信息</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> CreateBaseDepts(params BaseDeptInputDto[] dtos);
-
-        /// <summary>
-        /// 更新物品数据信息信息
-        /// </summary>
-        /// <param name="dtos">包含更新信息的物品数据信息DTO信息</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> UpdateBaseDepts(params BaseDeptInputDto[] dtos);
-
-        /// <summary>
-        /// 删除物品数据信息信息
-        /// </summary>
-        /// <param name="ids">要删除的物品数据信息编号</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> DeleteBaseDepts(params int[] ids);
-
-
-        #endregion
-
-        #region 人员数据信息业务
-
-        /// <summary>
-        /// 获取 物品数据信息查询数据集
-        /// </summary>
-        IQueryable<BaseStaff> BaseStaffs { get; }
-
-        /// <summary>
-        /// 检查物品数据信息信息是否存在
-        /// </summary>
-        /// <param name="predicate">检查谓语表达式</param>
-        /// <param name="id">更新的物品数据信息编号</param>
-        /// <returns>物品数据信息是否存在</returns>
-        Task<bool> CheckBaseStaffExists(Expression<Func<BaseStaff, bool>> predicate, int id = default(int));
-
-        /// <summary>
-        /// 添加物品数据信息信息
-        /// </summary>
-        /// <param name="dtos">要添加的物品数据信息DTO信息</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> CreateBaseStaffs(params BaseStaffInputDto[] dtos);
-
-        /// <summary>
-        /// 更新物品数据信息信息
-        /// </summary>
-        /// <param name="dtos">包含更新信息的物品数据信息DTO信息</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> UpdateBaseStaffs(params BaseStaffInputDto[] dtos);
-
-        /// <summary>
-        /// 删除物品数据信息信息
-        /// </summary>
-        /// <param name="ids">要删除的物品数据信息编号</param>
-        /// <returns>业务操作结果</returns>
-        Task<OperationResult> DeleteBaseStaffs(params int[] ids);
-
-
-        #endregion
-
+        
     }
 }
