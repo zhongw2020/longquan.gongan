@@ -24,6 +24,8 @@ using longquan.gongan.Infos;
 using longquan.gongan.Systems;
 using longquan.gongan.Web.Startups;
 using longquan.gongan.BaseData;
+using longquan.gongan.InStor;
+using longquan.gongan.OutStor;
 
 namespace longquan.gongan.Web
 {
@@ -44,7 +46,9 @@ namespace longquan.gongan.Web
                 .AddPack<SqlServerDefaultDbContextMigrationPack>()
                 .AddPack<AuditPack>()
                 .AddPack<InfosPack>()
-                .AddPack<BaseDataPack>();
+                .AddPack<BaseDataPack>()
+                .AddPack<InStorPack>()
+                .AddPack<OutStorPack>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
