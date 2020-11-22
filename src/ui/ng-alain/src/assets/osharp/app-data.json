@@ -79,17 +79,22 @@
           "text": "资产入库",
           "group": "true",
           "icon": "anticon-mail",
-          "acl": "Root.Admin.BaseData",
+          "acl": "Root.Admin.InStor",
           "children": [
             {
               "text": "采购入库",
-              "link": "/base-data/base-staff",
-              "acl": "Root.Admin.BaseData.BaseStaff"
+              "link": "/in-stor/in-stor-mat",
+              "acl": "Root.Admin.InStor.InStorMat"
             },
             {
               "text": "采购退库",
-              "link": "/base-data/base-dept",
-              "acl": "Root.Admin.BaseData.BaseDept"
+              "link": "/in-stor/in-stor-mat",
+              "acl": "Root.Admin.InStor.InStorMat"
+            },
+            {
+              "text": "库存情况",
+              "link": "/in-stor/in-stor-mat",
+              "acl": "Root.Admin.InStor.InStorMat"
             }
           ]
         }
@@ -108,12 +113,12 @@
           "text": "资产出库",
           "group": "true",
           "icon": "anticon-mail",
-          "acl": "Root.Admin.BaseData",
+          "acl": "Root.Admin.OutStor",
           "children": [
             {
               "text": "领用出库",
-              "link": "/base-data/base-staff",
-              "acl": "Root.Admin.BaseData.BaseStaff"
+              "link": "/out-stor/asset-collection",
+              "acl": "Root.Admin.OutStor.AssetCollection"
             },
             {
               "text": "资产报废",
