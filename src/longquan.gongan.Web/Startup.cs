@@ -73,7 +73,7 @@ namespace longquan.gongan.Web
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
-                endpoints.MapHub<CountHub>("/noticeHub");
+                endpoints.MapHub<CountHub>("/noticeHub");   
             });
         }
     }

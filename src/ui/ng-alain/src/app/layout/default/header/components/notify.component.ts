@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
 import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { NzMessageService } from 'ng-zorro-antd';
 import { NoticeItem, NoticeIconList } from '@delon/abc';
-import * as signalR from '@aspnet/signalr';
+import * as signalR from '@microsoft/signalr';
 import { async } from '@angular/core/testing';
 let connection=null;
 
@@ -125,12 +125,22 @@ export class HeaderNotifyComponent {
     connection = new signalR.HubConnectionBuilder()
     // 对应后端Startup中设置的MapHub
         .withUrl('/signalRHub/noticeHub')
+        // 等待0、2、10和30秒重连（可以自定义withAutomaticReconnect([0,2000,10000,30000])
+        .withAutomaticReconnect()
         .build();
         // 定义前端Hub方法
     connection.on('UpdateNotices', (notices) => {
       this.updateNoticeData(notices);
       this.count=notices.length;
       this.cdr.detectChanges();
+    });
+    connection.onreconnecting(error=>{
+      console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
+      console.log("连接断开，正在尝试重连。。。"+error)
+    });
+    connection.onreconnected(connectionId => {
+      console.assert(connection.state === signalR.HubConnectionState.Connected);
+      console.log("成功建立连接："+connectionId);
     });
     connection.start();
   }
