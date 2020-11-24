@@ -135,12 +135,12 @@ export class HeaderNotifyComponent {
       this.cdr.detectChanges();
     });
     connection.onreconnecting(error=>{
-      console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
+      // console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
       console.log("连接断开，正在尝试重连。。。"+error)
     });
     connection.onreconnected(connectionId => {
-      console.assert(connection.state === signalR.HubConnectionState.Connected);
-      console.log("成功建立连接："+connectionId);
+      // console.assert(connection.state === signalR.HubConnectionState.Connected);
+      console.log("成功建立连接，ID为："+connectionId);
     });
     connection.start();
   }
