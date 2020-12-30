@@ -50,7 +50,7 @@ namespace longquan.gongan.Web
                 .AddPack<BaseDataPack>()
                 .AddPack<InStorPack>()
                 .AddPack<OutStorPack>();
-                .AddPack<InfosPack>();
+            
             // Hub相关服务
             services.AddSingleton<NoticeService>();
             services.AddSignalR();

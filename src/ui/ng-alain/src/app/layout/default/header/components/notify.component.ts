@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
 import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { NzMessageService } from 'ng-zorro-antd';
 import { NoticeItem, NoticeIconList } from '@delon/abc';
-import * as signalR from '@microsoft/signalr';
+//import * as signalR from '@microsoft/signalr';
 import { async } from '@angular/core/testing';
-import { SingnalRService } from 'src/app/singnal-r.service';
+//import { SingnalRService } from 'src/app/singnal-r.service';
 
 
 /**
@@ -56,7 +56,7 @@ export class HeaderNotifyComponent {
   loading = false;
   noticeMsg = '';
 
-  constructor(private msg: NzMessageService, private cdr: ChangeDetectorRef,private singalR:SingnalRService) { }
+  constructor(private msg: NzMessageService, private cdr: ChangeDetectorRef) { }
 
   private updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
     const data = this.data.slice();
@@ -82,11 +82,7 @@ export class HeaderNotifyComponent {
   }
 
   async loadData() {
-    if (this.loading) return;
-    this.loading = true;
-    this.data = this.updateNoticeData(await this.singalR.invoke('GetNoticesAsync'));
-    this.loading = false;
-    this.cdr.detectChanges();
+   
   }
 
   clear(type: string) {
@@ -99,30 +95,9 @@ export class HeaderNotifyComponent {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     // 建立连接
-    this.setupConnection();
+   
   }
-  // 通过signalR发送消息
-  async sendMsg() {
-    // 调用后端SendNoticeAsync方法
-    await this.singalR.invoke('SendNoticeAsync', {
-      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png'
-      , title: this.noticeMsg
-      , datetime: new Date().toLocaleDateString
-      , type: '通知'
-    });
-  }
+
   // 设置signalR连接参数
-  setupConnection = () => {
-    this.singalR.on('UpdateNotices', (notices) => {
-      this.updateNoticeData(notices);
-      this.count = notices.length;
-      this.cdr.detectChanges();
-    });
-    this.singalR.start(async (res) => {
-      // 调用后端GetNoticesCountAsync方法
-      this.count = await this.singalR.invoke('GetNoticesCountAsync');
-      // 更新UI
-      this.cdr.detectChanges();
-    });
-  }
+
 }

@@ -1,11 +1,11 @@
 
 /*
 各模块路由：
-{ path: 'in-stor-view', loadChildren: () => import('./in-stor-view/in-stor-view.module').then(m => m.InStorViewModule), canActivateChild: [ACLGuard], data: { guard: 'Root.Admin.InStorView' } },
+{ path: 'in-stor', loadChildren: () => import('./in-stor/in-stor.module').then(m => m.InStorModule), canActivateChild: [ACLGuard], data: { guard: 'Root.Admin.InStor' } },
 
 各模块组件路由：
  模块组件路由数据
-{ path: 'in-stor-mat-view', component: InStorMatViewComponent, canActivate: [ACLGuard], data: { title: '资产入库视图管理', reuse: true, guard: 'Root.Admin.InStorView.InStorMatView.Read' } },
+{ path: 'in-stor-mat', component: InStorMatComponent, canActivate: [ACLGuard], data: { title: '资产入库管理', reuse: true, guard: 'Root.Admin.InStor.InStorMat.Read' } },
 
 
 
@@ -15,11 +15,11 @@
   "text": "模块",
   "group": "true",
   "icon": "anticon-border",
-  "acl": "Root.Admin.InStorView",
+  "acl": "Root.Admin.InStor",
   "children": [{
-    "text": "资产入库视图管理",
-    "link": "/in-stor-view/in-stor-mat-view",
-    "acl": "Root.Admin.InStorView.InStorMatView"
+    "text": "资产入库管理",
+    "link": "/in-stor/in-stor-mat",
+    "acl": "Root.Admin.InStor.InStorMat"
   }]
 }
 
