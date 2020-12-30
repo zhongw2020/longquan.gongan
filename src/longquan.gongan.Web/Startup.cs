@@ -43,9 +43,12 @@ namespace longquan.gongan.Web
                 .AddPack<DataAuthorizationPack>()
                 .AddPack<SqlServerDefaultDbContextMigrationPack>()
                 .AddPack<AuditPack>()
-                .AddPack<InfosPack>();
+                .AddPack<InfosPack>()
+                .AddPack<BaseDataPack>()
+                .AddPack<InStorPack>()
+                .AddPack<OutStorPack>();
             // Hub相关服务
-            services.AddSingleton<NoticeService>();
+            services.AddScoped<ExpiredMatService>();
             services.AddSignalR();
         }
 
@@ -73,7 +76,7 @@ namespace longquan.gongan.Web
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
-                endpoints.MapHub<CountHub>("/noticeHub");   
+                endpoints.MapHub<ExpiredMatHub>("/ExpiredMatHub");   
             });
         }
     }

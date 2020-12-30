@@ -13,8 +13,6 @@ import { SingnalRService } from 'src/app/singnal-r.service';
 @Component({
   selector: 'header-notify',
   template: `
-  <input [(ngModel)]="noticeMsg"/>
-  <button (click)="sendMsg()">发送消息</button>
     <notice-icon
       [data]="data"
       [count]="count"
@@ -84,7 +82,7 @@ export class HeaderNotifyComponent {
   async loadData() {
     if (this.loading) return;
     this.loading = true;
-    this.data = this.updateNoticeData(await this.singalR.invoke('GetNoticesAsync'));
+    this.data = this.updateNoticeData(await this.singalR.invoke('GetExpiredMatsAsync'));  
     this.loading = false;
     this.cdr.detectChanges();
   }
@@ -101,16 +99,16 @@ export class HeaderNotifyComponent {
     // 建立连接
     this.setupConnection();
   }
-  // 通过signalR发送消息
-  async sendMsg() {
-    // 调用后端SendNoticeAsync方法
-    await this.singalR.invoke('SendNoticeAsync', {
-      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png'
-      , title: this.noticeMsg
-      , datetime: new Date().toLocaleDateString
-      , type: '通知'
-    });
-  }
+  // // 通过signalR发送消息
+  // async sendMsg() {
+  //   // 调用后端SendNoticeAsync方法
+  //   await this.singalR.invoke('SendNoticeAsync', {
+  //     avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png'
+  //     , title: this.noticeMsg
+  //     , datetime: new Date().toLocaleDateString
+  //     , type: '通知'
+  //   });
+  // }
   // 设置signalR连接参数
   setupConnection = () => {
     this.singalR.on('UpdateNotices', (notices) => {
@@ -120,7 +118,7 @@ export class HeaderNotifyComponent {
     });
     this.singalR.start(async (res) => {
       // 调用后端GetNoticesCountAsync方法
-      this.count = await this.singalR.invoke('GetNoticesCountAsync');
+      this.count = await this.singalR.invoke('GetExpiredMatCountAsync');
       // 更新UI
       this.cdr.detectChanges();
     });

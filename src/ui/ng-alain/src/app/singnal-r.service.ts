@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 
 // Hub地址
-const url = '/signalRHub/noticeHub';
+const url = '/signalRHub/ExpiredMatHub';
 @Injectable({
   providedIn: 'root'
 })
