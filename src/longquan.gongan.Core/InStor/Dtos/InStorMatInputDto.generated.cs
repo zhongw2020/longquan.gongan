@@ -131,6 +131,12 @@ namespace longquan.gongan.InStor.Dtos
         public string SupName { get; set; }
 
         /// <summary>
+        /// 获取或设置 质保期
+        /// </summary>
+        [DisplayName("质保期")]
+        public DateTime WarrantyPeriod { get; set; }
+
+        /// <summary>
         /// 获取或设置 其他
         /// </summary>
         [DisplayName("其他")]
@@ -153,12 +159,6 @@ namespace longquan.gongan.InStor.Dtos
         /// </summary>
         [DisplayName("当前数量")]
         public double CurrNum { get; set; }
-
-        /// <summary>
-        /// 获取或设置 质保期
-        /// </summary>
-        [DisplayName("质保期")]
-        public DateTime WarrantyPeriod { get; set; }
 
         /// <summary>
         /// 获取或设置 生产日期
