@@ -1,6 +1,8 @@
 <nz-card>
   <div>
     <button nz-button (click)="loadData()"><i nz-icon nzType="reload" theme="outline"></i>刷新</button>
+    <button nz-button (click)="export()"><i nz-icon theme="outline"></i>导出</button>
+
   </div>
   <nz-table #nzTable [nzData]="data" nzSize="small">
     <thead>

@@ -39,12 +39,6 @@ const routes: Routes = [
         data: { guard: "Root.Admin.InStor" }
       },
       {
-        path: "in-stor-view",
-        loadChildren: () => import("./in-stor-view/in-stor-view.module").then((m) => m.InStorViewModule),
-        canActivateChild: [ACLGuard],
-        data: { guard: "Root.Admin.InStorView" }
-      },
-      {
         path: "out-stor",
         loadChildren: () => import("./out-stor/out-stor.module").then((m) => m.OutStorModule),
         canActivateChild: [ACLGuard],

@@ -14,7 +14,8 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { SFUISchema, SFSchema } from '@delon/form';
 import { OsharpSTColumn } from '@shared/osharp/services/alain.types';
 import { STComponentBase } from '@shared/osharp/components/st-component-base';
-
+import { XlsxService } from '@delon/abc/xlsx';
+import { map, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-base-dept',
   templateUrl: './base-dept.component.html',
@@ -22,7 +23,7 @@ import { STComponentBase } from '@shared/osharp/components/st-component-base';
 })
 export class BaseDeptComponent extends STComponentBase implements OnInit {
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, private xlsx: XlsxService) {
     super(injector);
     this.moduleName = 'baseDept';
   }
@@ -59,6 +60,19 @@ export class BaseDeptComponent extends STComponentBase implements OnInit {
       $Other: { grid: { span: 24 } }
     };
     return ui;
+  }
+
+  export(): void {
+    const data = [this.columns.map(i => i.title)];
+    this.data.forEach(i => data.push(this.columns.map(c => i[c.index as string])));
+    this.xlsx.export({
+      sheets: [
+        {
+          data,
+          name: 'sheet name',
+        },
+      ],
+    });
   }
 }
 

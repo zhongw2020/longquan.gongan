@@ -26,7 +26,7 @@ using longquan.gongan.Web.Startups;
 using longquan.gongan.BaseData;
 using longquan.gongan.InStor;
 using longquan.gongan.OutStor;
-using longquan.gongan.InStorView;
+using longquan.gongan.Web.Controllers;
 
 namespace longquan.gongan.Web
 {
@@ -47,10 +47,13 @@ namespace longquan.gongan.Web
                 .AddPack<SqlServerDefaultDbContextMigrationPack>()
                 .AddPack<AuditPack>()
                 .AddPack<InfosPack>()
+                .AddPack<BaseDataPack>()
                 .AddPack<InStorPack>()
-                .AddPack<InStorViewPack>()
-                .AddPack<OutStorPack>()
-                .AddPack<BaseDataPack>();
+                .AddPack<OutStorPack>();
+                .AddPack<InfosPack>();
+            // Hub相关服务
+            services.AddSingleton<NoticeService>();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +77,11 @@ namespace longquan.gongan.Web
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseOSharp();
+
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+                endpoints.MapHub<CountHub>("/noticeHub");   
+            });
         }
     }
 }

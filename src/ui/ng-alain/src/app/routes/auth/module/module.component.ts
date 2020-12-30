@@ -4,6 +4,7 @@ import { PageRequest, FilterRule, FilterOperate, FilterGroup } from '@shared/osh
 import { List } from 'linqts';
 import { ArrayService } from '@delon/util';
 import { STColumn, STReq, STPage, STRes, STComponent } from '@delon/abc';
+import { XlsxService } from '@delon/abc/xlsx';
 import { FunctionViewComponent } from '@shared/components/function-view/function-view.component';
 
 export interface TreeNodeInterface {
@@ -28,12 +29,31 @@ export class ModuleComponent implements OnInit {
   request: PageRequest = new PageRequest();
   mapOfExpandedData: { [key: string]: TreeNodeInterface[] } = {};
 
-  constructor(private alain: AlainService, private arraySrv: ArrayService) { }
+  constructor(private alain: AlainService, private arraySrv: ArrayService,private xlsx: XlsxService) { }
 
   ngOnInit() {
     this.loadData();
   }
-
+  export():void{
+    let data = [['操作','名称','备注','代码','排序']]
+    data.push(['操作','名称','备注','代码','排序']);
+    // const data = [this.columns.map(i => i.title)]; 
+    data.push(['操作1','名称1','备注1','代码1','排序1']);
+    data.push(['操作2','名称2','备注2','代码2','排序2']);
+    data.push(['操作3','名称3','备注3','代码3','排序3']);
+    data.push(['操作4','名称4','备注4','代码4','排序4']);
+    data.push(['操作5','名称5','备注5','代码5','排序5']);
+    data.push(['操作6','名称6','备注6','代码6','排序6']);
+    // this.users.forEach(i => data.push(this.columns.map(c => i[c.index as string])));
+    this.xlsx.export({
+      sheets: [
+        {
+          data,
+          name: 'sheet name',
+        },
+      ],
+    });
+  }
   loadData() {
     let url = 'api/admin/module/read';
     this.alain.http.post(url, this.request).subscribe(res => {
