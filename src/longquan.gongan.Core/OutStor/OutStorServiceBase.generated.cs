@@ -65,6 +65,16 @@ namespace longquan.gongan.OutStor
         protected IRepository<AssetCollection, int> AssetCollectionRepository => ServiceProvider.GetService<IRepository<AssetCollection, int>>();
         
         /// <summary>
+        /// 获取或设置 资产报废信息仓储对象
+        /// </summary>
+        protected IRepository<Scrap, int> ScrapRepository => ServiceProvider.GetService<IRepository<Scrap, int>>();
+        
+        /// <summary>
+        /// 获取或设置 资产调拨信息仓储对象
+        /// </summary>
+        protected IRepository<Allocation, int> AllocationRepository => ServiceProvider.GetService<IRepository<Allocation, int>>();
+        
+        /// <summary>
         /// 获取 事件总线
         /// </summary>
         protected IEventBus EventBus => ServiceProvider.GetService<IEventBus>();

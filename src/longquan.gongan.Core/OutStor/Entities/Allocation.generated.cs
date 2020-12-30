@@ -4,10 +4,10 @@
 //    手动更改此文件可能导致应用程序出现意外的行为。
 //    如果重新生成代码，对此文件的任何修改都会丢失。
 //    如果需要扩展此类：可遵守如下规则进行扩展：
-//      1.横向扩展：如需添加额外的属性，可新建文件“AssetCollection.cs”的分部类“public partial class AssetCollection”}添加属性
+//      1.横向扩展：如需添加额外的属性，可新建文件“Allocation.cs”的分部类“public partial class Allocation”}添加属性
 // </auto-generated>
 //
-//  <copyright file="AssetCollection.generated.cs" company="longquan.gongan">
+//  <copyright file="Allocation.generated.cs" company="longquan.gongan">
 //      longquan.gongan
 //  </copyright>
 //  <site>http://longquan.gongan</site>
@@ -25,65 +25,47 @@ using OSharp.Entity;
 namespace longquan.gongan.OutStor.Entities
 {
     /// <summary>
-    /// 实体类：资产领用信息
+    /// 实体类：资产调拨信息
     /// </summary>
-    [Description("资产领用信息")]
+    [Description("资产调拨信息")]
     [TableNamePrefix("OutStor")]
-    public partial class AssetCollection : EntityBase<int>, ICreationAudited<int>, IUpdateAudited<int>
+    public partial class Allocation : EntityBase<int>, ICreationAudited<int>, IUpdateAudited<int>
     {
         /// <summary>
-        /// 获取或设置 领用凭证
+        /// 获取或设置 调拨编号
         /// </summary>
-        [DisplayName("领用凭证"), Required]
-        public string ColVoucher { get; set; }
+        [DisplayName("调拨编号")]
+        public string AllocationNo { get; set; }
 
         /// <summary>
-        /// 获取或设置 领用部门编码
+        /// 获取或设置 资产编号
         /// </summary>
-        [DisplayName("领用部门编码")]
-        public string ColDeptno { get; set; }
+        [DisplayName("资产编号")]
+        public string MatNo { get; set; }
 
         /// <summary>
-        /// 获取或设置 领用人员编码
+        /// 获取或设置 调至部门
         /// </summary>
-        [DisplayName("领用人员编码")]
-        public string ColStaffno { get; set; }
+        [DisplayName("调至部门")]
+        public string Dept { get; set; }
 
         /// <summary>
-        /// 获取或设置 领用物品编码
+        /// 获取或设置 调拨日期
         /// </summary>
-        [DisplayName("领用物品编码")]
-        public string ColMatno { get; set; }
-
-        /// <summary>
-        /// 获取或设置 领用日期
-        /// </summary>
-        [DisplayName("领用日期")]
-        public DateTime ColDate { get; set; }
-
-        /// <summary>
-        /// 获取或设置 领用数量
-        /// </summary>
-        [DisplayName("领用数量")]
-        public double ColNumber { get; set; }
-
-        /// <summary>
-        /// 获取或设置 备注
-        /// </summary>
-        [DisplayName("备注")]
-        public string Remark { get; set; }
-
-        /// <summary>
-        /// 获取或设置 其他
-        /// </summary>
-        [DisplayName("其他")]
-        public string Other { get; set; }
+        [DisplayName("调拨日期")]
+        public DateTime AllocationDate { get; set; }
 
         /// <summary>
         /// 获取或设置 审核状态
         /// </summary>
         [DisplayName("审核状态")]
         public string VerifyState { get; set; }
+
+        /// <summary>
+        /// 获取或设置 备注
+        /// </summary>
+        [DisplayName("备注")]
+        public string Remark { get; set; }
 
         /// <summary>
         /// 获取或设置 创建者

@@ -15,6 +15,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared';
 import { InStorRoutingModule } from './in-stor.routing';
 import { InStorMatComponent } from './in-stor-mat/in-stor-mat.component';
+import { InStorBackComponent } from './in-stor-back/in-stor-back.component';
+import { OutStorBackComponent } from './out-stor-back/out-stor-back.component';
 
 @NgModule({
   imports: [
@@ -24,6 +26,8 @@ import { InStorMatComponent } from './in-stor-mat/in-stor-mat.component';
   ],
   declarations: [
     InStorMatComponent,
+    InStorBackComponent,
+    OutStorBackComponent,
   ]
 })
 export class InStorModule { }

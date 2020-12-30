@@ -15,6 +15,11 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared';
 import { OutStorRoutingModule } from './out-stor.routing';
 import { AssetCollectionComponent } from './asset-collection/asset-collection.component';
+import { AllocationVComponent } from './allocation-v/allocation-v.component';
+import { AssetCollectionVComponent } from './asset-collection-v/asset-collection-v.component';
+import { AllocationComponent } from './allocation/allocation.component';
+import { ScrapComponent } from './scrap/scrap.component';
+import { ScrapVComponent } from './scrap-v/scrap-v.component';
 
 @NgModule({
   imports: [
@@ -24,6 +29,11 @@ import { AssetCollectionComponent } from './asset-collection/asset-collection.co
   ],
   declarations: [
     AssetCollectionComponent,
+    AssetCollectionVComponent,
+    AllocationComponent,
+    AllocationVComponent,
+    ScrapVComponent,
+    ScrapComponent,
   ]
 })
 export class OutStorModule { }

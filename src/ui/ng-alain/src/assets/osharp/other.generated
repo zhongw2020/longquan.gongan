@@ -1,25 +1,35 @@
 
 /*
 各模块路由：
-{ path: 'in-stor', loadChildren: () => import('./in-stor/in-stor.module').then(m => m.InStorModule), canActivateChild: [ACLGuard], data: { guard: 'Root.Admin.InStor' } },
+{ path: 'out-stor', loadChildren: () => import('./out-stor/out-stor.module').then(m => m.OutStorModule), canActivateChild: [ACLGuard], data: { guard: 'Root.Admin.OutStor' } },
 
 各模块组件路由：
- 模块组件路由数据
-{ path: 'in-stor-mat', component: InStorMatComponent, canActivate: [ACLGuard], data: { title: '资产入库管理', reuse: true, guard: 'Root.Admin.InStor.InStorMat.Read' } },
+资产出库 模块组件路由数据
+{ path: 'asset-collection', component: AssetCollectionComponent, canActivate: [ACLGuard], data: { title: '资产领用管理', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
+{ path: 'scrap', component: ScrapComponent, canActivate: [ACLGuard], data: { title: '资产报废管理', reuse: true, guard: 'Root.Admin.OutStor.Scrap.Read' } },
+{ path: 'allocation', component: AllocationComponent, canActivate: [ACLGuard], data: { title: '资产调拨管理', reuse: true, guard: 'Root.Admin.OutStor.Allocation.Read' } },
 
 
 
 各模块菜单数据：
- 模块菜单数据
+资产出库 模块菜单数据
 {
-  "text": "模块",
+  "text": "资产出库模块",
   "group": "true",
   "icon": "anticon-border",
-  "acl": "Root.Admin.InStor",
+  "acl": "Root.Admin.OutStor",
   "children": [{
-    "text": "资产入库管理",
-    "link": "/in-stor/in-stor-mat",
-    "acl": "Root.Admin.InStor.InStorMat"
+    "text": "资产领用管理",
+    "link": "/out-stor/asset-collection",
+    "acl": "Root.Admin.OutStor.AssetCollection"
+  }, {
+    "text": "资产报废管理",
+    "link": "/out-stor/scrap",
+    "acl": "Root.Admin.OutStor.Scrap"
+  }, {
+    "text": "资产调拨管理",
+    "link": "/out-stor/allocation",
+    "acl": "Root.Admin.OutStor.Allocation"
   }]
 }
 

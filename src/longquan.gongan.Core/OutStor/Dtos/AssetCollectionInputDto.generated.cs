@@ -88,5 +88,11 @@ namespace longquan.gongan.OutStor.Dtos
         [DisplayName("其他")]
         public string Other { get; set; }
 
+        /// <summary>
+        /// 获取或设置 审核状态
+        /// </summary>
+        [DisplayName("审核状态")]
+        public string VerifyState { get; set; }
+
     }
 }

@@ -72,5 +72,83 @@ namespace longquan.gongan.OutStor
 
         #endregion
         
+        #region 资产报废信息业务
+
+        /// <summary>
+        /// 获取 资产报废信息查询数据集
+        /// </summary>
+        IQueryable<Scrap> Scraps { get; }
+
+        /// <summary>
+        /// 检查资产报废信息信息是否存在
+        /// </summary>
+        /// <param name="predicate">检查谓语表达式</param>
+        /// <param name="id">更新的资产报废信息编号</param>
+        /// <returns>资产报废信息是否存在</returns>
+        Task<bool> CheckScrapExists(Expression<Func<Scrap, bool>> predicate, int id = default(int));
+        
+        /// <summary>
+        /// 添加资产报废信息信息
+        /// </summary>
+        /// <param name="dtos">要添加的资产报废信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> CreateScraps(params ScrapInputDto[] dtos);
+            
+        /// <summary>
+        /// 更新资产报废信息信息
+        /// </summary>
+        /// <param name="dtos">包含更新信息的资产报废信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> UpdateScraps(params ScrapInputDto[] dtos);
+            
+        /// <summary>
+        /// 删除资产报废信息信息
+        /// </summary>
+        /// <param name="ids">要删除的资产报废信息编号</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> DeleteScraps(params int[] ids);
+        
+
+        #endregion
+        
+        #region 资产调拨信息业务
+
+        /// <summary>
+        /// 获取 资产调拨信息查询数据集
+        /// </summary>
+        IQueryable<Allocation> Allocations { get; }
+
+        /// <summary>
+        /// 检查资产调拨信息信息是否存在
+        /// </summary>
+        /// <param name="predicate">检查谓语表达式</param>
+        /// <param name="id">更新的资产调拨信息编号</param>
+        /// <returns>资产调拨信息是否存在</returns>
+        Task<bool> CheckAllocationExists(Expression<Func<Allocation, bool>> predicate, int id = default(int));
+        
+        /// <summary>
+        /// 添加资产调拨信息信息
+        /// </summary>
+        /// <param name="dtos">要添加的资产调拨信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> CreateAllocations(params AllocationInputDto[] dtos);
+            
+        /// <summary>
+        /// 更新资产调拨信息信息
+        /// </summary>
+        /// <param name="dtos">包含更新信息的资产调拨信息DTO信息</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> UpdateAllocations(params AllocationInputDto[] dtos);
+            
+        /// <summary>
+        /// 删除资产调拨信息信息
+        /// </summary>
+        /// <param name="ids">要删除的资产调拨信息编号</param>
+        /// <returns>业务操作结果</returns>
+        Task<OperationResult> DeleteAllocations(params int[] ids);
+        
+
+        #endregion
+        
     }
 }

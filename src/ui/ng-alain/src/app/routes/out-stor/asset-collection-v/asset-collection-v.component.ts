@@ -17,10 +17,10 @@ import { STComponentBase } from '@shared/osharp/components/st-component-base';
 
 @Component({
   selector: 'app-asset-collection',
-  templateUrl: './asset-collection.component.html',
+  templateUrl: './asset-collection-v.component.html',
   styles: []
 })
-export class AssetCollectionComponent extends STComponentBase implements OnInit {
+export class AssetCollectionVComponent extends STComponentBase implements OnInit {
 
   constructor(injector: Injector) {
     super(injector);
@@ -33,15 +33,11 @@ export class AssetCollectionComponent extends STComponentBase implements OnInit 
 
   protected GetSTColumns(): OsharpSTColumn[] {
     let columns: OsharpSTColumn[] = [
+   
       {
-        title: '操作', fixed: 'left', width: 65, buttons: [{
-          text: '操作', children: [
-            { text: '编辑', icon: 'edit', acl: 'Root.Admin.OutStor.AssetCollection.Update', iif: row => row.Updatable, click: row => this.edit(row) },
-            { text: '删除', icon: 'delete', type: 'del', acl: 'Root.Admin.OutStor.AssetCollection.Delete', iif: row => row.Deletable, click: row => this.delete(row) },
-          ]
-        }]
+        title: '领用审核', fixed: 'left', width: 65, buttons: [{ text: '领用审核', icon: 'edit', acl: 'Root.Admin.OutStor.AssetCollection.Update', iif: row => (row.SupTicketRemark && row.ReconciliationRemark && (!row.SupCloseAccuntsFlag)), click: row => this.edit(row) }]
       },
-     // { title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
+      { title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
       { title: '领用凭证', index: 'ColVoucher', sort: true, editable: true, filterable: true, ftype: 'string' },
       { title: '领用部门编码', index: 'ColDeptno', sort: true, editable: true, filterable: true, ftype: 'string' },
       { title: '领用人员编码', index: 'ColStaffno', sort: true, editable: true, filterable: true, ftype: 'string' },

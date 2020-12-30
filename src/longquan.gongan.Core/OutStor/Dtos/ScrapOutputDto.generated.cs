@@ -4,10 +4,10 @@
 //    手动更改此文件可能导致应用程序出现意外的行为。
 //    如果重新生成代码，对此文件的任何修改都会丢失。
 //    如果需要扩展此类：可遵守如下规则进行扩展：
-//      1.横向扩展：如需添加额外的属性，可新建文件“AssetCollectionOutputDto.cs”的分部类“public partial class AssetCollectionOutputDto”}添加属性
+//      1.横向扩展：如需添加额外的属性，可新建文件“ScrapOutputDto.cs”的分部类“public partial class ScrapOutputDto”}添加属性
 // </auto-generated>
 //
-//  <copyright file="AssetCollectionOutputDto.generated.cs" company="longquan.gongan">
+//  <copyright file="ScrapOutputDto.generated.cs" company="longquan.gongan">
 //      longquan.gongan
 //  </copyright>
 //  <site>http://longquan.gongan</site>
@@ -27,33 +27,31 @@ using longquan.gongan.OutStor.Entities;
 namespace longquan.gongan.OutStor.Dtos
 {
     /// <summary>
-    /// 输入DTO：资产领用信息
+    /// 输入DTO：资产报废信息
     /// </summary>
-    [MapFrom(typeof(AssetCollection))]
-    [Description("资产领用信息")]
-    public partial class AssetCollectionOutputDto : IOutputDto, IDataAuthEnabled
+    [MapFrom(typeof(Scrap))]
+    [Description("资产报废信息")]
+    public partial class ScrapOutputDto : IOutputDto, IDataAuthEnabled
     {
         /// <summary>
-        /// 初始化一个<see cref="AssetCollectionOutputDto"/>类型的新实例
+        /// 初始化一个<see cref="ScrapOutputDto"/>类型的新实例
         /// </summary>
-        public AssetCollectionOutputDto()
+        public ScrapOutputDto()
         { }
 
         /// <summary>
-        /// 初始化一个<see cref="AssetCollectionOutputDto"/>类型的新实例
+        /// 初始化一个<see cref="ScrapOutputDto"/>类型的新实例
         /// </summary>
-        public AssetCollectionOutputDto(AssetCollection entity)
+        public ScrapOutputDto(Scrap entity)
         {
             Id = entity.Id;
-            ColVoucher = entity.ColVoucher;
-            ColDeptno = entity.ColDeptno;
-            ColStaffno = entity.ColStaffno;
-            ColMatno = entity.ColMatno;
-            ColDate = entity.ColDate;
-            ColNumber = entity.ColNumber;
-            Remark = entity.Remark;
-            Other = entity.Other;
+            MatNo = entity.MatNo;
+            ScrapDate = entity.ScrapDate;
+            ScrapNo = entity.ScrapNo;
+            Dept = entity.Dept;
             VerifyState = entity.VerifyState;
+            Remark = entity.Remark;
+            MatName = entity.MatName;
             CreatorId = entity.CreatorId;
             CreatedTime = entity.CreatedTime;
             LastUpdaterId = entity.LastUpdaterId;
@@ -67,40 +65,34 @@ namespace longquan.gongan.OutStor.Dtos
         public int Id { get; set; }
 
         /// <summary>
-        /// 获取或设置 领用凭证
+        /// 获取或设置 资产编号
         /// </summary>
-        [DisplayName("领用凭证")]
-        public string ColVoucher { get; set; }
+        [DisplayName("资产编号")]
+        public string MatNo { get; set; }
 
         /// <summary>
-        /// 获取或设置 领用部门编码
+        /// 获取或设置 报废日期
         /// </summary>
-        [DisplayName("领用部门编码")]
-        public string ColDeptno { get; set; }
+        [DisplayName("报废日期")]
+        public DateTime ScrapDate { get; set; }
 
         /// <summary>
-        /// 获取或设置 领用人员编码
+        /// 获取或设置 报废编号
         /// </summary>
-        [DisplayName("领用人员编码")]
-        public string ColStaffno { get; set; }
+        [DisplayName("报废编号")]
+        public string ScrapNo { get; set; }
 
         /// <summary>
-        /// 获取或设置 领用物品编码
+        /// 获取或设置 申请部门
         /// </summary>
-        [DisplayName("领用物品编码")]
-        public string ColMatno { get; set; }
+        [DisplayName("申请部门")]
+        public string Dept { get; set; }
 
         /// <summary>
-        /// 获取或设置 领用日期
+        /// 获取或设置 审核状态
         /// </summary>
-        [DisplayName("领用日期")]
-        public DateTime ColDate { get; set; }
-
-        /// <summary>
-        /// 获取或设置 领用数量
-        /// </summary>
-        [DisplayName("领用数量")]
-        public double ColNumber { get; set; }
+        [DisplayName("审核状态")]
+        public string VerifyState { get; set; }
 
         /// <summary>
         /// 获取或设置 备注
@@ -109,16 +101,10 @@ namespace longquan.gongan.OutStor.Dtos
         public string Remark { get; set; }
 
         /// <summary>
-        /// 获取或设置 其他
+        /// 获取或设置 资产名称
         /// </summary>
-        [DisplayName("其他")]
-        public string Other { get; set; }
-
-        /// <summary>
-        /// 获取或设置 审核状态
-        /// </summary>
-        [DisplayName("审核状态")]
-        public string VerifyState { get; set; }
+        [DisplayName("资产名称")]
+        public string MatName { get; set; }
 
         /// <summary>
         /// 获取或设置 创建者

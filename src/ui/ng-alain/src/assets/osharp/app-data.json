@@ -87,11 +87,6 @@
               "acl": "Root.Admin.InStor.InStorMat"
             },
             {
-              "text": "入库视图",
-              "link": "/in-stor-view/in-stor-mat-view",
-              "acl": "Root.Admin.InStor.InStorMat"
-            },
-            {
               "text": "采购退库",
               "link": "/in-stor/in-stor-back",
               "acl": "Root.Admin.InStor.InStorMat"
@@ -117,24 +112,39 @@
           "acl": "Root.Admin.OutStor",
           "children": [
             {
-              "text": "领用出库",
+              "text": "领用申请",
               "link": "/out-stor/asset-collection",
               "acl": "Root.Admin.OutStor.AssetCollection"
             },
             {
-              "text": "资产报废",
-              "link": "/base-data/base-dept",
-              "acl": "Root.Admin.BaseData.BaseDept"
+              "text": "领用审核",
+              "link": "/out-stor/asset-collection-v",
+              "acl": "Root.Admin.OutStor.AssetCollection"
             },
             {
-              "text": "调拨移库",
-              "link": "/base-data/base-store",
-              "acl": "Root.Admin.BaseData.BaseStore"
+              "text": "报废申请",
+              "link": "/out-stor/scrap",
+              "acl": "Root.Admin.OutStor"
+            },
+            {
+              "text": "报废审核",
+              "link": "/out-stor/scrap-v",
+              "acl": "Root.Admin.OutStor"
+            },
+            {
+              "text": "调拨申请",
+              "link": "/out-stor/allocation",
+              "acl": "Root.Admin.OutStor"
+            },
+            {
+              "text": "调拨审核",
+              "link": "/out-stor/allocation-v",
+              "acl": "Root.Admin.OutStor"
             },
             {
               "text": "领用退库",
-              "link": "/base-data/base-sup",
-              "acl": "Root.Admin.BaseData.BaseSup"
+              "link": "/out-stor/out-stor-back",
+              "acl": "Root.Admin.OutStor"
             }
           ]
         }
