@@ -33,16 +33,9 @@ export class InStorBackComponent extends STComponentBase implements OnInit {
 
   protected GetSTColumns(): OsharpSTColumn[] {
     let columns: OsharpSTColumn[] = [
+   
       {
-        title: '操作', fixed: 'left', width: 65, buttons: [{
-          text: '操作', children: [
-            { text: '退库', icon: 'edit', acl: 'Root.Admin.InStor.InStorMat.Update', iif: row => row.Updatable, click: row => this.edit(row) },
-          
-          ]
-        }]
-      },
-      {
-        title: '采购退库', fixed: 'left', width: 65, buttons: [{ text: '采购退库', icon: 'edit', acl: 'Root.Admin.InStor.InStorMat.Update', iif: row => (row.SupTicketRemark && row.ReconciliationRemark && (!row.SupCloseAccuntsFlag)), click: row => this.edit(row) }]
+        title: '采购退库', fixed: 'left', width: 65, buttons: [{ text: '采购退库', icon: 'edit', acl: 'Root.Admin.InStor.InStorMat.Update',click: row => this.edit(row) }]
       },
       //{ title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
       { title: '国标大类', index: 'BigType', sort: true, editable: true, filterable: true, ftype: 'string' },

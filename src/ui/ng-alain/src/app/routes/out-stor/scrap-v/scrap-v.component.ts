@@ -37,7 +37,7 @@ export class ScrapVComponent extends STComponentBase implements OnInit {
       {
         title: '报废审核', fixed: 'left', width: 65, buttons: [{ text: '报废审核', icon: 'edit', acl: 'Root.Admin.OutStor.Scrap.Update', iif: row => !(row.VerifyState=="通过"), click: row => this.edit(row) }]
       },
-      { title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
+     // { title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
       { title: '资产编号', index: 'MatNo', sort: true, editable: true, filterable: true, ftype: 'string' },
       { title: '报废日期', index: 'ScrapDate', sort: true, editable: true, filterable: true, type: 'date' },
       { title: '报废编号', index: 'ScrapNo', sort: true, editable: true, filterable: true, ftype: 'string' },

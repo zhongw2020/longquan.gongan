@@ -90,8 +90,12 @@
               "text": "采购退库",
               "link": "/in-stor/in-stor-back",
               "acl": "Root.Admin.InStor.InStorMat"
+            },
+            {
+              "text": "领用退库",
+              "link": "/in-stor/out-stor-back",
+              "acl": "Root.Admin.InStor.InStorMat"
             }
-
           ]
         }
 
@@ -139,11 +143,6 @@
             {
               "text": "调拨审核",
               "link": "/out-stor/allocation-v",
-              "acl": "Root.Admin.OutStor"
-            },
-            {
-              "text": "领用退库",
-              "link": "/out-stor/out-stor-back",
               "acl": "Root.Admin.OutStor"
             }
           ]

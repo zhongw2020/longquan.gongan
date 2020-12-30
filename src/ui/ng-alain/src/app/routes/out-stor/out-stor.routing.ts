@@ -24,8 +24,8 @@ import { ScrapVComponent } from './scrap-v/scrap-v.component';
 const routes: Routes = [
   { path: 'asset-collection', component: AssetCollectionComponent, canActivate: [ACLGuard], data: { title: '领用申请', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
   { path: 'asset-collection-v', component: AssetCollectionVComponent, canActivate: [ACLGuard], data: { title: '领用审核', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
-  { path: 'allocation', component: AllocationVComponent, canActivate: [ACLGuard], data: { title: '调拨申请', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
-  { path: 'allocation-v', component: AllocationComponent, canActivate: [ACLGuard], data: { title: '调拨审核', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
+  { path: 'allocation', component: AllocationComponent, canActivate: [ACLGuard], data: { title: '调拨申请', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
+  { path: 'allocation-v', component: AllocationVComponent, canActivate: [ACLGuard], data: { title: '调拨审核', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
   { path: 'scrap', component: ScrapComponent, canActivate: [ACLGuard], data: { title: '报废申请', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
   { path: 'scrap-v', component: ScrapVComponent, canActivate: [ACLGuard], data: { title: '报废审核', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
  

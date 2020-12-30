@@ -34,9 +34,9 @@ export class AllocationVComponent extends STComponentBase implements OnInit {
   protected GetSTColumns(): OsharpSTColumn[] {
     let columns: OsharpSTColumn[] = [
       {
-        title: '调拨审核', fixed: 'left', width: 65, buttons: [{ text: '调拨审核', icon: 'edit', acl: 'Root.Admin.OutStor.Allocation.Update', iif: row => (row.SupTicketRemark && row.ReconciliationRemark && (!row.SupCloseAccuntsFlag)), click: row => this.edit(row) }]
+        title: '调拨审核', fixed: 'left', width: 65, buttons: [{ text: '调拨审核', icon: 'edit', acl: 'Root.Admin.OutStor.Allocation.Update',  click: row => this.edit(row) }]
       },
-      { title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
+      //{ title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
       { title: '调拨编号', index: 'AllocationNo', sort: true, editable: true, filterable: true, ftype: 'string' },
       { title: '资产编号', index: 'MatNo', sort: true, editable: true, filterable: true, ftype: 'string' },
       { title: '调至部门', index: 'Dept', sort: true, editable: true, filterable: true, ftype: 'string' },

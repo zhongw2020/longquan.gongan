@@ -35,9 +35,9 @@ export class AssetCollectionVComponent extends STComponentBase implements OnInit
     let columns: OsharpSTColumn[] = [
    
       {
-        title: '领用审核', fixed: 'left', width: 65, buttons: [{ text: '领用审核', icon: 'edit', acl: 'Root.Admin.OutStor.AssetCollection.Update', iif: row => (row.SupTicketRemark && row.ReconciliationRemark && (!row.SupCloseAccuntsFlag)), click: row => this.edit(row) }]
+        title: '领用审核', fixed: 'left', width: 65, buttons: [{ text: '领用审核', icon: 'edit', acl: 'Root.Admin.OutStor.AssetCollection.Update',click: row => this.edit(row) }]
       },
-      { title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
+      //{ title: '编号', index: 'Id', sort: true, readOnly: true, editable: true, filterable: true, ftype: 'number' },
       { title: '领用凭证', index: 'ColVoucher', sort: true, editable: true, filterable: true, ftype: 'string' },
       { title: '领用部门编码', index: 'ColDeptno', sort: true, editable: true, filterable: true, ftype: 'string' },
       { title: '领用人员编码', index: 'ColStaffno', sort: true, editable: true, filterable: true, ftype: 'string' },
