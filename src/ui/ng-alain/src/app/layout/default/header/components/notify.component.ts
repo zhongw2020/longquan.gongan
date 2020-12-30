@@ -4,7 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { NoticeItem, NoticeIconList } from '@delon/abc';
 import * as signalR from '@microsoft/signalr';
 import { async } from '@angular/core/testing';
-let connection=null;
+import { SingnalRService } from 'src/app/singnal-r.service';
 
 
 /**
@@ -54,9 +54,9 @@ export class HeaderNotifyComponent {
   ];
   count = 0;
   loading = false;
-  noticeMsg='';
+  noticeMsg = '';
 
-  constructor(private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
+  constructor(private msg: NzMessageService, private cdr: ChangeDetectorRef,private singalR:SingnalRService) { }
 
   private updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
     const data = this.data.slice();
@@ -84,9 +84,9 @@ export class HeaderNotifyComponent {
   async loadData() {
     if (this.loading) return;
     this.loading = true;
-      this.data = this.updateNoticeData(await connection.invoke('GetNoticesAsync'));
-      this.loading = false;
-      this.cdr.detectChanges();
+    this.data = this.updateNoticeData(await this.singalR.invoke('GetNoticesAsync'));
+    this.loading = false;
+    this.cdr.detectChanges();
   }
 
   clear(type: string) {
@@ -97,52 +97,32 @@ export class HeaderNotifyComponent {
     this.msg.success(`点击了 ${res.title} 的 ${res.item.title}`);
   }
   // tslint:disable-next-line: use-lifecycle-interface
-  ngOnInit(){
+  ngOnInit() {
     // 建立连接
     this.setupConnection();
-    // 延迟1秒获取消息条数（后期考虑别的方式）
-      setTimeout(async () => {
-        // 调用后端GetNoticesCountAsync方法
-        this.count=await connection.invoke('GetNoticesCountAsync');
-        // 更新UI
-        this.cdr.detectChanges();
-      }, 1000);
-      
-
   }
   // 通过signalR发送消息
-  async sendMsg(){
+  async sendMsg() {
     // 调用后端SendNoticeAsync方法
-    await connection.invoke('SendNoticeAsync',{
-      avatar:'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png'
-      ,title:this.noticeMsg
-      ,datetime:new Date().toLocaleDateString
-      ,type:'通知'
+    await this.singalR.invoke('SendNoticeAsync', {
+      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png'
+      , title: this.noticeMsg
+      , datetime: new Date().toLocaleDateString
+      , type: '通知'
     });
   }
   // 设置signalR连接参数
   setupConnection = () => {
-    connection = new signalR.HubConnectionBuilder()
-    // 对应后端Startup中设置的MapHub
-        .withUrl('/signalRHub/noticeHub')
-        // 等待0、2、10和30秒重连（可以自定义withAutomaticReconnect([0,2000,10000,30000])
-        .withAutomaticReconnect()
-        .build();
-        // 定义前端Hub方法
-    connection.on('UpdateNotices', (notices) => {
+    this.singalR.on('UpdateNotices', (notices) => {
       this.updateNoticeData(notices);
-      this.count=notices.length;
+      this.count = notices.length;
       this.cdr.detectChanges();
     });
-    connection.onreconnecting(error=>{
-      // console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
-      console.log("连接断开，正在尝试重连。。。"+error)
+    this.singalR.start(async (res) => {
+      // 调用后端GetNoticesCountAsync方法
+      this.count = await this.singalR.invoke('GetNoticesCountAsync');
+      // 更新UI
+      this.cdr.detectChanges();
     });
-    connection.onreconnected(connectionId => {
-      // console.assert(connection.state === signalR.HubConnectionState.Connected);
-      console.log("成功建立连接，ID为："+connectionId);
-    });
-    connection.start();
   }
-
 }
