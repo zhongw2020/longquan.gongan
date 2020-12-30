@@ -24,6 +24,9 @@ using longquan.gongan.Infos;
 using longquan.gongan.Systems;
 using longquan.gongan.Web.Startups;
 using longquan.gongan.BaseData;
+using longquan.gongan.InStor;
+using longquan.gongan.OutStor;
+using longquan.gongan.InStorView;
 
 namespace longquan.gongan.Web
 {
@@ -44,6 +47,9 @@ namespace longquan.gongan.Web
                 .AddPack<SqlServerDefaultDbContextMigrationPack>()
                 .AddPack<AuditPack>()
                 .AddPack<InfosPack>()
+                .AddPack<InStorPack>()
+                .AddPack<InStorViewPack>()
+                .AddPack<OutStorPack>()
                 .AddPack<BaseDataPack>();
         }
 

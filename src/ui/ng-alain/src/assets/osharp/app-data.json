@@ -79,7 +79,7 @@
           "text": "资产入库",
           "group": "true",
           "icon": "anticon-mail",
-          "acl": "Root.Admin.InStor",
+          "acl": "Root.Admin",
           "children": [
             {
               "text": "采购入库",
@@ -87,15 +87,16 @@
               "acl": "Root.Admin.InStor.InStorMat"
             },
             {
-              "text": "采购退库",
-              "link": "/in-stor/in-stor-mat",
+              "text": "入库视图",
+              "link": "/in-stor-view/in-stor-mat-view",
               "acl": "Root.Admin.InStor.InStorMat"
             },
             {
-              "text": "库存情况",
-              "link": "/in-stor/in-stor-mat",
+              "text": "采购退库",
+              "link": "/in-stor/in-stor-back",
               "acl": "Root.Admin.InStor.InStorMat"
             }
+
           ]
         }
 
@@ -175,7 +176,7 @@
               "acl": "Root.Admin.BaseData.BaseStore"
             }
 
-            
+
           ]
         }
 
