@@ -1,4 +1,14 @@
 {
+  "/signalRHub": {
+    "target": "http://localhost:7001",
+    "changeOrigin": true, 
+    "ws": true,
+    "secure": false,
+    "pathRewrite": {
+      "^/signalRHub": ""
+    },
+    "logLevel": "debug"
+  },
   "/api": {
     "target": "http://localhost:7001",
     "secure": false
