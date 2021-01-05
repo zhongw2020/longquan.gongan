@@ -159,35 +159,67 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
         //各部门领用情况
         public IActionResult ReportSeld(DateTime start, DateTime end)
         {
+            string starttime = start.ToString("yyyy-MM-dd HH:mm:ss");
+            string endtime2 = end.ToString("yyyy-MM-dd");
+            string endtime = endtime2 + " 23:59:59";
             //各部门专用设备使用数量情况
-            string sql001 = @"SELECT Userdepartment,sum(CurrNum) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='在用' group by Userdepartment,CurrNum";
+            string sql001 = @"SELECT Userdepartment,sum(CurrNum) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='在用' and DeletedTime is null and GetDate>= '"+ starttime + "' and GetDate<='"+ endtime + "' group by Userdepartment,CurrNum";
 
             DataTable  dt001= sq.Select_DateSet_Sqlserver(ConnectionString, sql001).Tables[0];
 
 
             //各部门专用设备使用金额情况
-            string sql003 = @"SELECT Userdepartment,sum(CurrNum*InPrice) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='在用' group by Userdepartment,CurrNum";
+            string sql003 = @"SELECT Userdepartment,sum(CurrNum*InPrice) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='在用' and DeletedTime is null  and GetDate>= '"+ starttime + "' and GetDate<='"+ endtime + "' group by Userdepartment,CurrNum";
 
             DataTable dt003= sq.Select_DateSet_Sqlserver(ConnectionString, sql003).Tables[0];
 
             //各部门专用设备报废数量情况
-            string sql002 = @"SELECT Userdepartment,sum(CurrNum) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='报废' group by Userdepartment,CurrNum";
+            string sql002 = @"SELECT Userdepartment,sum(CurrNum) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='报废' and DeletedTime is null and GetDate>= '"+ starttime + "' and GetDate<='"+ endtime + "' group by Userdepartment,CurrNum";
 
             DataTable dt002 = sq.Select_DateSet_Sqlserver(ConnectionString, sql002).Tables[0];
 
 
             //各部门专用设备报废金额情况
-            string sql004 = @"SELECT Userdepartment,sum(CurrNum*InPrice) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='报废' group by Userdepartment,CurrNum";
+            string sql004 = @"SELECT Userdepartment,sum(CurrNum*InPrice) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='报废' and DeletedTime is null and GetDate>= '"+ starttime + "' and GetDate<='"+ endtime + "' group by Userdepartment,CurrNum";
 
             DataTable dt004 = sq.Select_DateSet_Sqlserver(ConnectionString, sql004).Tables[0];
 
-
-
-
             //专用设备采购费用统计
-            string sql005 = @"select convert(varchar,sum(currnum*InPrice)) from InStor_InStorMat ";
+            string sql005 = @"select convert(varchar,sum(currnum*InPrice)) from InStor_InStorMat where  DeletedTime is null and GetDate>= '"+ starttime + "' and GetDate<='"+ endtime + "'";
 
             string str001 = sq.Select_Str_Sqlserver(ConnectionString, sql005);
+
+            //专用设备报费费用统计
+            string sql006 = @"select convert(varchar,sum(currnum*InPrice)) from InStor_InStorMat  where Usage='报废' and DeletedTime is null and GetDate>= '"+ starttime + "' and GetDate<='"+ endtime + "'";
+
+            string str002 = sq.Select_Str_Sqlserver(ConnectionString, sql006);
+
+            //专用设备库存告警量统计
+            string sql007 = @"SELECT convert(varchar,count(*)) FROM Report_StoreWarn";
+
+            string str003 = sq.Select_Str_Sqlserver(ConnectionString, sql007);
+
+            //专用设备质保期费用统计
+            string sql008 = @"SELECT convert(varchar,count(*)) FROM Report_DateWarn";
+
+            string str004 = sq.Select_Str_Sqlserver(ConnectionString, sql008);
+
+            if (str001 == "")
+            {
+                str001 = "0";
+            }
+            if (str002 == "")
+            {
+                str002 = "0";
+            }
+            if (str003 == "")
+            {
+                str003 = "0";
+            }
+            if (str004 == "")
+            {
+                str004 = "0";
+            }
 
             var infos = new
             {
@@ -196,6 +228,9 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
                 dt003,
                 dt004,
                 str001,
+                str002,
+                str003,
+                str004,
             };
            return Json(infos);
         }

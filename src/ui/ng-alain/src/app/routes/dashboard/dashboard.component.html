@@ -6,7 +6,7 @@
   <div class="data-range">
     <span>时间范围：</span>
     <!-- <nz-range-picker [(ngModel)]="pickerRanges['最近30天']" [nzFormat]="dateFormat" [nzRanges]="pickerRanges" (ngModelChange)="rangePickerChange($event)"></!-->
-    <nz-range-picker [(ngModel)]="pickerRanges['最近30天']" [nzRanges]="pickerRanges" (ngModelChange)="rangePickerChange($event)"></nz-range-picker>
+    <nz-range-picker [(ngModel)]="pickerRanges['全部']" [nzRanges]="pickerRanges" (ngModelChange)="rangePickerChange($event)"></nz-range-picker>
   </div>
 </div>
 <nz-row nzGutter="32" *ngIf="summaries">
@@ -14,7 +14,15 @@
     <div nz-row nzType="flex" nzAlign="middle" [ngClass]="summary.bgColor" class="rounded-md">
       <div nz-col nzSpan="12" class="p-md text-white">
         <div class="h2 mt0">{{summary.data}}</div>
-        <p class="text-nowrap mb0">{{summary.text}}</p>
+        <p class="text-nowrap mb0">{{summary.text}}（项）</p>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let summary of summaries2" nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
+    <div nz-row nzType="flex" nzAlign="middle" [ngClass]="summary.bgColor" class="rounded-md">
+      <div nz-col nzSpan="12" class="p-md text-white">
+        <div class="h2 mt0">{{summary.data| _currency}}</div>
+        <p class="text-nowrap mb0">{{summary.text}}（元）</p>
       </div>
     </div>
   </div>

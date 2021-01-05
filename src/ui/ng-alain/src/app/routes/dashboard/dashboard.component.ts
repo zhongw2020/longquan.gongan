@@ -36,12 +36,14 @@ export class DashboardComponent implements AfterViewInit {
 
 
   summaries: Summary[] = [];
+  summaries2: Summary[] = [];
   lineChartData: any[] = [];
 
   constructor(private http: _HttpClient) { }
 
   ngAfterViewInit(): void {
-    this.rangePickerChange(this.pickerRanges.最近30天);
+   // this.rangePickerChange(this.pickerRanges.最近30天);
+    this.rangePickerChange(this.pickerRanges.全部);
   }
 
   rangePickerChange(e) {
@@ -80,7 +82,7 @@ export class DashboardComponent implements AfterViewInit {
       }
 
       this.summaries = [];
-     
+      this.summaries2 = [];
    ;
       this.salesPieDatasynum = [];
       this.salesPieDatasymoney = [];
@@ -88,13 +90,14 @@ export class DashboardComponent implements AfterViewInit {
       this.salesPieDatabfmoney = [];
 
       //第一排
-      this.summaries.push({ data: `${res.salesoutall}`, text: '告警数据统计', bgColor: 'bg-red' });
-      this.summaries.push({data: `${res.salesoutleijilirun}`, text: '资产金额统计', bgColor: 'bg-success' });
-      this.summaries.push({ data: `${res.salesout}`, text: '报废数据统计', bgColor: 'bg-success' });
-      this.summaries.push({ data: `${res.salesoutyuelirun}`, text: '其他数据统计', bgColor: 'bg-success' });
+      this.summaries.push({ data: `${res.str004}`, text: '质保期告警', bgColor: 'bg-red' });
+      this.summaries.push({ data: `${res.str003}`, text: '库存量告警', bgColor: 'bg-red' });
+
+      this.summaries2.push({ data: `${res.str001}`, text: '采购累计费用', bgColor: 'bg-success' });
+      this.summaries2.push({ data: `${res.str002}`, text: '报废累计费用', bgColor: 'bg-success' });
 
 
-      //饼状图人员派单单量情况
+      //饼状图使用数量情况
       this.totalsynum = 0;
       for (var i = 0; i < res.dt001.length; i++) {
         this.salesPieDatasynum.push({ x: res.dt001[i].Userdepartment, y: Number.parseFloat(`${res.dt001[i].SumNum}`) });
@@ -102,7 +105,7 @@ export class DashboardComponent implements AfterViewInit {
       this.totalsynum = this.salesPieDatasynum.reduce((pre, now) => now.y + pre, 0).toFixed(2) + '个';
 
 
-      //饼状图人员派单单量情况
+      //饼状图报废数量情况
 
       this.totalbfnum = 0;
       for (var i = 0; i < res.dt001.length; i++) {
@@ -113,7 +116,7 @@ export class DashboardComponent implements AfterViewInit {
     
 
 
-      //饼状图月销售金额情况
+      //饼状图使用金额情况
       for (var i = 0; i < res.dt003.length; i++) {
         this.salesPieDatasymoney.push({ x: res.dt003[i].Userdepartment, y: Number.parseFloat(`${res.dt003[i].SumNum}`) });
       }
@@ -121,7 +124,7 @@ export class DashboardComponent implements AfterViewInit {
 
 
 
-      //饼状图人员派单单量情况
+      //饼状图报废金额情况
 
       for (var i = 0; i < res.dt003.length; i++) {
         this.salesPieDatabfmoney.push({ x: res.dt003[i].Userdepartment, y: Number.parseFloat(`${res.dt003[i].SumNum}`) });
