@@ -128,6 +128,126 @@ namespace longquan.gongan.Web.Migrations
                     b.ToTable("Systems_KeyValue");
                 });
 
+            modelBuilder.Entity("longquan.gongan.AllReport.Entities.StorWarn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Batch")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BigType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Brand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatorId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("CurrNum")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("GetDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GetMethod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("InPrice")
+                        .HasColumnType("float");
+
+                    b.Property<double>("In_Num")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("InaccountDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastUpdaterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Managerdepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ManufactureDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MatName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MatNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MatType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Model")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Purpose")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("SafeNum")
+                        .HasColumnType("float");
+
+                    b.Property<string>("StoreName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("SumNum")
+                        .HasColumnType("float");
+
+                    b.Property<string>("SupName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Userdepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ValueType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("WarrantyPeriod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("WarrantyPeriod2")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AllReport_StorWarn");
+                });
+
             modelBuilder.Entity("longquan.gongan.Authorization.Entities.EntityRole", b =>
                 {
                     b.Property<Guid>("Id")
@@ -936,6 +1056,9 @@ namespace longquan.gongan.Web.Migrations
                     b.Property<string>("MatName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MatNo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MatType")
                         .HasColumnType("nvarchar(max)");
 
@@ -955,9 +1078,6 @@ namespace longquan.gongan.Web.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Other5")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Other6")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Purpose")
@@ -1358,6 +1478,192 @@ namespace longquan.gongan.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OutStor_Scrap");
+                });
+
+            modelBuilder.Entity("longquan.gongan.Report.Entities.DateWarn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Batch")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BigType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Brand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatorId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("CurrNum")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("DeletedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("GetDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GetMethod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("InPrice")
+                        .HasColumnType("float");
+
+                    b.Property<double>("In_Num")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("InaccountDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastUpdaterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Managerdepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ManufactureDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MatName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MatNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MatType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Model")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Purpose")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("SafeNum")
+                        .HasColumnType("float");
+
+                    b.Property<string>("StoreName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SupName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Userdepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ValueType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("WarrantyPeriod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("WarrantyPeriod2")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Report_DateWarn");
+                });
+
+            modelBuilder.Entity("longquan.gongan.Report.Entities.StoreSum", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BigType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ComPany")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Managerdepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MatName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("SafeNum")
+                        .HasColumnType("float");
+
+                    b.Property<double>("SumNum")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Usage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Report_StoreSum");
+                });
+
+            modelBuilder.Entity("longquan.gongan.Report.Entities.StoreWarn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BigType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ComPany")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Managerdepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MatName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("SafeNum")
+                        .HasColumnType("float");
+
+                    b.Property<double>("SumNum")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Report_StoreWarn");
                 });
 
             modelBuilder.Entity("longquan.gongan.Systems.Entities.AuditEntity", b =>

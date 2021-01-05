@@ -19,10 +19,42 @@
     </div>
   </div>
 </nz-row>
-<nz-row nzGutter="8">
+
+<nz-row nzGutter="32">
+  <div style="float:left; width:25%">
+    <g2-pie [hasLegend]="true" title="使用数量情况"
+            subTitle="使用数量情况"
+            [total]="totalsynum"
+            [valueFormat]="format"
+            [data]="salesPieDatasynum"
+            height="294"></g2-pie>
+  </div>
+  <div style="float:left; width:25%">
+    <g2-pie [hasLegend]="true" title="使用金额情况"
+            subTitle="使用金额情况"
+            [total]="totalsymoney"
+            [data]="salesPieDatasymoney"
+            height="294"></g2-pie>
+  </div>
+  <div style="float:left; width:25%">
+    <g2-pie [hasLegend]="true" title="报废数量情况"
+            subTitle="报废数量情况"
+            [total]="totalbfnum"
+            [data]="salesPieDatabfnum"
+            height="294"></g2-pie>
+  </div>
+  <div style="float:left; width:25%">
+    <g2-pie [hasLegend]="true" title="报废金额情况"
+            subTitle="报废金额情况"
+            [total]="totalbfmoney"
+            [data]="salesPieDatabfmoney"
+            height="294"></g2-pie>
+  </div>
+</nz-row>
+<!--<nz-row nzGutter="8">
   <nz-col nzSpan="24">
-    <nz-card nzTitle="用户数量日增长/日累计">
-      <g2-timeline [data]="lineChartData" [titleMap]="{y1:'日注册量', y2:'总注册量'}" [height]="200"></g2-timeline>
+    <nz-card nzTitle="数据趋势图">
+      <g2-timeline [data]="lineChartData" [titleMap]="{y1:'数据1', y2:'数据2'}" [height]="200"></g2-timeline>
     </nz-card>
   </nz-col>
-</nz-row>
+</nz-row>-->

@@ -45,6 +45,18 @@ const routes: Routes = [
         data: { guard: "Root.Admin.OutStor" }
       },
       {
+        path: "report",
+        loadChildren: () => import("./report/report.module").then((m) =>m.ReportModule),
+        canActivateChild: [ACLGuard],
+        data: { guard: "Root.Admin.Report" }
+      },
+      {
+        path: "all-report",
+        loadChildren: () => import("./all-report/all-report.module").then((m) => m.AllReportModule),
+        canActivateChild: [ACLGuard],
+        data: { guard: "Root.Admin.AllReport" }
+      },
+      {
 				path: "infos",
 				loadChildren: () => import("./infos/infos.module").then((m) => m.InfosModule),
 				canActivateChild: [ ACLGuard ],

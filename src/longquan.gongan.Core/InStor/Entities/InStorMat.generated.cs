@@ -212,10 +212,10 @@ namespace longquan.gongan.InStor.Entities
         public string Brand { get; set; }
 
         /// <summary>
-        /// 获取或设置 其他6
+        /// 获取或设置 资产编码
         /// </summary>
-        [DisplayName("其他6")]
-        public string Other6 { get; set; }
+        [DisplayName("资产编码")]
+        public string MatNo { get; set; }
 
         /// <summary>
         /// 获取或设置 其他3

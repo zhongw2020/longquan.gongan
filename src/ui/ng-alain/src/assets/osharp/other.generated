@@ -1,35 +1,35 @@
 
 /*
 各模块路由：
-{ path: 'out-stor', loadChildren: () => import('./out-stor/out-stor.module').then(m => m.OutStorModule), canActivateChild: [ACLGuard], data: { guard: 'Root.Admin.OutStor' } },
+{ path: 'report', loadChildren: () => import('./report/report.module').then(m => m.ReportModule), canActivateChild: [ACLGuard], data: { guard: 'Root.Admin.Report' } },
 
 各模块组件路由：
-资产出库 模块组件路由数据
-{ path: 'asset-collection', component: AssetCollectionComponent, canActivate: [ACLGuard], data: { title: '资产领用管理', reuse: true, guard: 'Root.Admin.OutStor.AssetCollection.Read' } },
-{ path: 'scrap', component: ScrapComponent, canActivate: [ACLGuard], data: { title: '资产报废管理', reuse: true, guard: 'Root.Admin.OutStor.Scrap.Read' } },
-{ path: 'allocation', component: AllocationComponent, canActivate: [ACLGuard], data: { title: '资产调拨管理', reuse: true, guard: 'Root.Admin.OutStor.Allocation.Read' } },
+ 模块组件路由数据
+{ path: 'date-warn', component: DateWarnComponent, canActivate: [ACLGuard], data: { title: '质保期告警管理', reuse: true, guard: 'Root.Admin.Report.DateWarn.Read' } },
+{ path: 'store-warn', component: StoreWarnComponent, canActivate: [ACLGuard], data: { title: '库存量告警管理', reuse: true, guard: 'Root.Admin.Report.StoreWarn.Read' } },
+{ path: 'store-sum', component: StoreSumComponent, canActivate: [ACLGuard], data: { title: '库存盘点管理', reuse: true, guard: 'Root.Admin.Report.StoreSum.Read' } },
 
 
 
 各模块菜单数据：
-资产出库 模块菜单数据
+ 模块菜单数据
 {
-  "text": "资产出库模块",
+  "text": "模块",
   "group": "true",
   "icon": "anticon-border",
-  "acl": "Root.Admin.OutStor",
+  "acl": "Root.Admin.Report",
   "children": [{
-    "text": "资产领用管理",
-    "link": "/out-stor/asset-collection",
-    "acl": "Root.Admin.OutStor.AssetCollection"
+    "text": "质保期告警管理",
+    "link": "/report/date-warn",
+    "acl": "Root.Admin.Report.DateWarn"
   }, {
-    "text": "资产报废管理",
-    "link": "/out-stor/scrap",
-    "acl": "Root.Admin.OutStor.Scrap"
+    "text": "库存量告警管理",
+    "link": "/report/store-warn",
+    "acl": "Root.Admin.Report.StoreWarn"
   }, {
-    "text": "资产调拨管理",
-    "link": "/out-stor/allocation",
-    "acl": "Root.Admin.OutStor.Allocation"
+    "text": "库存盘点管理",
+    "link": "/report/store-sum",
+    "acl": "Root.Admin.Report.StoreSum"
   }]
 }
 

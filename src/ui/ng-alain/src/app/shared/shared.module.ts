@@ -24,6 +24,7 @@ import { ModalTreeComponent } from './components/modal-tree/modal-tree.component
 import { FilterGroupComponent } from './components/filter-group/filter-group.component';
 import { FilterRuleComponent } from './components/filter-group/filter-rule.component';
 import { AdSearchComponent } from './components/ad-search/ad-search.component';
+//import { AdSearch2Component } from './components/ad-search/ad-search2.component';
 import { AdSearchModalComponent } from './components/ad-search/modal/modal.component';
 import { FunctionViewComponent } from './components/function-view/function-view.component';
 

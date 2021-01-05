@@ -162,27 +162,28 @@
           "text": "报表管理",
           "group": "true",
           "icon": "anticon-mail",
-          "acl": "Root.Admin.BaseData",
+          "acl": "Root.Admin",
           "children": [
             {
-              "text": "安全库存告警",
-              "link": "/base-data/base-staff",
-              "acl": "Root.Admin.BaseData.BaseStaff"
+              "text": "库存量告警",
+              "link": "/report/store-warn",
+              "acl": "Root.Admin.Report"
             },
             {
               "text": "质保期告警",
-              "link": "/base-data/base-dept",
-              "acl": "Root.Admin.BaseData.BaseDept"
+              "link": "/report/date-warn",
+              "acl": "Root.Admin.Report"
             },
+
             {
               "text": "统计查询",
-              "link": "/base-data/base-store",
-              "acl": "Root.Admin.BaseData.BaseStore"
+              "link": "/in-stor/in-stor-report",
+              "acl": "Root.Admin.InStor"
             },
             {
               "text": "资产盘点",
-              "link": "/base-data/base-store",
-              "acl": "Root.Admin.BaseData.BaseStore"
+              "link": "/report/store-sum",
+              "acl": "Root.Admin.Report"
             }
 
 

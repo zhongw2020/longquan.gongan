@@ -75,7 +75,7 @@ namespace longquan.gongan.InStor.Dtos
             WarrantyPeriod2 = entity.WarrantyPeriod2;
             Batch = entity.Batch;
             Brand = entity.Brand;
-            Other6 = entity.Other6;
+            MatNo = entity.MatNo;
             Other3 = entity.Other3;
             CreatorId = entity.CreatorId;
             CreatedTime = entity.CreatedTime;
@@ -270,10 +270,10 @@ namespace longquan.gongan.InStor.Dtos
         public string Brand { get; set; }
 
         /// <summary>
-        /// 获取或设置 其他6
+        /// 获取或设置 资产编码
         /// </summary>
-        [DisplayName("其他6")]
-        public string Other6 { get; set; }
+        [DisplayName("资产编码")]
+        public string MatNo { get; set; }
 
         /// <summary>
         /// 获取或设置 其他3

@@ -17,6 +17,7 @@ import { InStorRoutingModule } from './in-stor.routing';
 import { InStorMatComponent } from './in-stor-mat/in-stor-mat.component';
 import { InStorBackComponent } from './in-stor-back/in-stor-back.component';
 import { OutStorBackComponent } from './out-stor-back/out-stor-back.component';
+import { InStorReportComponent } from './in-stor-report/in-stor-report.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { OutStorBackComponent } from './out-stor-back/out-stor-back.component';
     InStorMatComponent,
     InStorBackComponent,
     OutStorBackComponent,
+    InStorReportComponent,
   ]
 })
 export class InStorModule { }

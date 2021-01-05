@@ -9,10 +9,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 
 using longquan.gongan.Authorization;
+using longquan.gongan.Common;
 using longquan.gongan.Identity.Entities;
 
 using Microsoft.AspNetCore.Identity;
@@ -38,6 +40,8 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
         private readonly DataAuthManager _dataAuthorizationManager;
         private readonly ICacheService _cacheService;
 
+        private SqlHelper sq = new SqlHelper();
+        private string ConnectionString = "Server=.\\SQLZHONG;Database=gongan;User ID=sa;Password=TengKun777;MultipleActiveResultSets=true";
         /// <summary>
         /// 初始化一个<see cref="DashboardController"/>类型的新实例
         /// </summary>
@@ -150,6 +154,50 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
                 throw new ArgumentException($"结束时间{end}不能小于开始时间{start}");
             }
             return m => m.CreatedTime.Date >= start.Date && m.CreatedTime.Date <= end.Date;
+        }
+
+        //各部门领用情况
+        public IActionResult ReportSeld(DateTime start, DateTime end)
+        {
+            //各部门专用设备使用数量情况
+            string sql001 = @"SELECT Userdepartment,sum(CurrNum) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='在用' group by Userdepartment,CurrNum";
+
+            DataTable  dt001= sq.Select_DateSet_Sqlserver(ConnectionString, sql001).Tables[0];
+
+
+            //各部门专用设备使用金额情况
+            string sql003 = @"SELECT Userdepartment,sum(CurrNum*InPrice) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='在用' group by Userdepartment,CurrNum";
+
+            DataTable dt003= sq.Select_DateSet_Sqlserver(ConnectionString, sql003).Tables[0];
+
+            //各部门专用设备报废数量情况
+            string sql002 = @"SELECT Userdepartment,sum(CurrNum) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='报废' group by Userdepartment,CurrNum";
+
+            DataTable dt002 = sq.Select_DateSet_Sqlserver(ConnectionString, sql002).Tables[0];
+
+
+            //各部门专用设备报废金额情况
+            string sql004 = @"SELECT Userdepartment,sum(CurrNum*InPrice) as SumNum FROM [gongan].[dbo].[InStor_InStorMat]  where BigType='专用设备' and Usage='报废' group by Userdepartment,CurrNum";
+
+            DataTable dt004 = sq.Select_DateSet_Sqlserver(ConnectionString, sql004).Tables[0];
+
+
+
+
+            //专用设备采购费用统计
+            string sql005 = @"select convert(varchar,sum(currnum*InPrice)) from InStor_InStorMat ";
+
+            string str001 = sq.Select_Str_Sqlserver(ConnectionString, sql005);
+
+            var infos = new
+            {
+                dt001,
+                dt002,
+                dt003,
+                dt004,
+                str001,
+            };
+           return Json(infos);
         }
     }
 }

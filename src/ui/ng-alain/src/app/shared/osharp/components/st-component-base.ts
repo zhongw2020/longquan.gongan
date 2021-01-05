@@ -161,6 +161,7 @@ export abstract class STComponentBase {
     this.ui = this.GetSFUISchema();
     this.editRow = {};
     this.editTitle = '新增';
+    this.editModal.nzWidth = 700;
     this.editModal.open();
   }
 

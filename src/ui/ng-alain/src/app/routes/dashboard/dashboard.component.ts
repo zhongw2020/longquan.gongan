@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, } from '@angular/core';
 
 import * as moment from 'moment';
 import { _HttpClient } from '@delon/theme';
+import { G2PieData } from '@delon/chart/pie';
 
 
 @Component({
@@ -21,6 +22,18 @@ export class DashboardComponent implements AfterViewInit {
     '上月': [moment().subtract(1, "months").startOf("month").toDate(), moment().subtract(1, "months").endOf("month").toDate()],
     '全部': [moment("1-1-1", "MM-DD-YYYY").toDate(), moment("12-31-9999", "MM-DD-YYYY").toDate()]
   };
+  totalsynum: any;
+  totalbfnum: any;
+  totalsymoney: any;
+  totalbfmoney: any;
+
+  totalpd: string;
+  salesPieDatasynum: G2PieData[] = [];
+  salesPieDatasymoney: G2PieData[] = [];
+  salesPieDatabfnum: G2PieData[] = [];
+  salesPieDatabfmoney: G2PieData[] = [];
+
+
 
   summaries: Summary[] = [];
   lineChartData: any[] = [];
@@ -37,24 +50,89 @@ export class DashboardComponent implements AfterViewInit {
     }
     const start = e[0].toLocaleDateString()
     const end = e[1].toLocaleDateString();
-    this.summaryData(start, end);
-    this.userLine(start, end);
+    this.reportseld(start, end);
+   // this.userLine(start, end);
   }
 
   /** 统计数据 */
-  summaryData(start, end) {
-    const url = `api/admin/dashboard/SummaryData?start=${start}&end=${end}`;
+  //summaryData(start, end) {
+  //  const url = `api/admin/dashboard/SummaryData?start=${start}&end=${end}`;
+  //  this.http.get(url).subscribe((res: any) => {
+  //    if (!res) {
+  //      return;
+  //    }
+  //    this.summaries = [];
+  //    this.summaries.push({ data: `999`, text: '告警数据统计 ', bgColor: 'bg-primary' });
+  //    this.summaries.push({ data: `999999`, text: '资产金额统计 ', bgColor: 'bg-success' });
+  //    this.summaries.push({ data: `999`, text: '报废数据统计', bgColor: 'bg-orange' });
+  //    this.summaries.push({ data: `999999`, text: '其他数据统计', bgColor: 'bg-magenta' });
+  //  });
+  //}
+
+  reportseld(start, end) {
+    const url = `api/admin/dashboard/ReportSeld?start=${start}&end=${end}`;
     this.http.get(url).subscribe((res: any) => {
+
+
       if (!res) {
+
         return;
       }
+
       this.summaries = [];
-      this.summaries.push({ data: `${res.users.ValidCount} / ${res.users.TotalCount}`, text: '用户：已激活 / 总计', bgColor: 'bg-primary' });
-      this.summaries.push({ data: `${res.roles.AdminCount} / ${res.roles.TotalCount}`, text: '角色：管理 / 总计', bgColor: 'bg-success' });
-      this.summaries.push({ data: `${res.modules.SiteCount} / ${res.modules.AdminCount} / ${res.modules.TotalCount}`, text: '模块：前台 / 管理 / 总计', bgColor: 'bg-orange' });
-      this.summaries.push({ data: `${res.functions.ControllerCount} / ${res.functions.TotalCount}`, text: '功能：控制器 / 总计', bgColor: 'bg-magenta' });
+     
+   ;
+      this.salesPieDatasynum = [];
+      this.salesPieDatasymoney = [];
+      this.salesPieDatabfnum = [];
+      this.salesPieDatabfmoney = [];
+
+      //第一排
+      this.summaries.push({ data: `${res.salesoutall}`, text: '告警数据统计', bgColor: 'bg-red' });
+      this.summaries.push({data: `${res.salesoutleijilirun}`, text: '资产金额统计', bgColor: 'bg-success' });
+      this.summaries.push({ data: `${res.salesout}`, text: '报废数据统计', bgColor: 'bg-success' });
+      this.summaries.push({ data: `${res.salesoutyuelirun}`, text: '其他数据统计', bgColor: 'bg-success' });
+
+
+      //饼状图人员派单单量情况
+      this.totalsynum = 0;
+      for (var i = 0; i < res.dt001.length; i++) {
+        this.salesPieDatasynum.push({ x: res.dt001[i].Userdepartment, y: Number.parseFloat(`${res.dt001[i].SumNum}`) });
+      }
+      this.totalsynum = this.salesPieDatasynum.reduce((pre, now) => now.y + pre, 0).toFixed(2) + '个';
+
+
+      //饼状图人员派单单量情况
+
+      this.totalbfnum = 0;
+      for (var i = 0; i < res.dt001.length; i++) {
+        this.salesPieDatabfnum.push({ x: res.dt001[i].Userdepartment, y: Number.parseFloat(`${res.dt001[i].SumNum}`) });
+        this.totalbfnum += Number.parseFloat(`${res.dt001[i].SumNum}`);
+      }
+      this.totalbfnum = this.salesPieDatabfnum.reduce((pre, now) => now.y + pre, 0).toFixed(2)  + '个';
+    
+
+
+      //饼状图月销售金额情况
+      for (var i = 0; i < res.dt003.length; i++) {
+        this.salesPieDatasymoney.push({ x: res.dt003[i].Userdepartment, y: Number.parseFloat(`${res.dt003[i].SumNum}`) });
+      }
+      this.totalsymoney = `&yen ${this.salesPieDatasymoney.reduce((pre, now) => now.y + pre, 0).toFixed(2)}`;
+
+
+
+      //饼状图人员派单单量情况
+
+      for (var i = 0; i < res.dt003.length; i++) {
+        this.salesPieDatabfmoney.push({ x: res.dt003[i].Userdepartment, y: Number.parseFloat(`${res.dt003[i].SumNum}`) });
+      }
+      this.totalbfmoney = `&yen ${this.salesPieDatabfmoney.reduce((pre, now) => now.y + pre, 0).toFixed(2)}`;
+
+
+
     });
   }
+
 
   /** 用户曲线 */
   userLine(start, end) {

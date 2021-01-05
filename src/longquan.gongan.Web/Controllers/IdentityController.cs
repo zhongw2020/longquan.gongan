@@ -152,7 +152,7 @@ namespace longquan.gongan.Web.Controllers
                     + $"如果上面的链接无法点击，您可以复制以下地址，并粘贴到浏览器的地址栏中打开。<br>"
                     + $"{url}<br>"
                     + $"祝您使用愉快！";
-                await SendMailAsync(user.Email, "柳柳软件 注册邮箱激活邮件", body);
+                await SendMailAsync(user.Email, "TK 注册邮箱激活邮件", body);
 
                 return result.ToAjaxResult(m => new { m.UserName, m.NickName, m.Email });
             }
@@ -539,7 +539,7 @@ namespace longquan.gongan.Web.Controllers
                 + $"如果上面的链接无法点击，您可以复制以下地址，并粘贴到浏览器的地址栏中打开。<br>"
                 + $"{url}<br>"
                 + $"祝您使用愉快！";
-            await SendMailAsync(user.Email, "柳柳软件 注册邮箱激活邮件", body);
+            await SendMailAsync(user.Email, "TK 注册邮箱激活邮件", body);
             return new AjaxResult("激活Email邮件发送成功");
         }
 
@@ -602,11 +602,11 @@ namespace longquan.gongan.Web.Controllers
             IEmailSender sender = HttpContext.RequestServices.GetService<IEmailSender>();
             string url = $"{Request.Scheme}://{Request.Host}/#/passport/reset-password?userId={user.Id}&token={token}";
             string body = $"亲爱的用户 <strong>{user.NickName}</strong>[{user.UserName}]，您好！<br>"
-                + $"欢迎使用柳柳软件账户密码重置功能，请 <a href=\"{url}\" target=\"_blank\"><strong>点击这里</strong></a><br>"
+                + $"欢迎使用TK账户密码重置功能，请 <a href=\"{url}\" target=\"_blank\"><strong>点击这里</strong></a><br>"
                 + $"如果上面的链接无法点击，您可以复制以下地址，并粘贴到浏览器的地址栏中打开。<br>"
                 + $"{url}<br>"
                 + $"祝您使用愉快！";
-            await sender.SendEmailAsync(user.Email, "柳柳软件 重置密码邮件", body);
+            await sender.SendEmailAsync(user.Email, "TK 重置密码邮件", body);
             return new AjaxResult("密码重置邮件发送成功");
         }
 

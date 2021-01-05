@@ -27,6 +27,8 @@ using longquan.gongan.BaseData;
 using longquan.gongan.InStor;
 using longquan.gongan.OutStor;
 using longquan.gongan.Web.Controllers;
+using longquan.gongan.Report;
+using longquan.gongan.AllReport;
 
 namespace longquan.gongan.Web
 {
@@ -49,7 +51,9 @@ namespace longquan.gongan.Web
                 .AddPack<InfosPack>()
                 .AddPack<BaseDataPack>()
                 .AddPack<InStorPack>()
-                .AddPack<OutStorPack>();
+                .AddPack<OutStorPack>()
+                .AddPack<AllReportPack>()
+                 .AddPack<ReportPack>();
             
             // Hub相关服务
             services.AddSingleton<NoticeService>();
