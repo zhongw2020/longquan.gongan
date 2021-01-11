@@ -105,6 +105,7 @@ import { LayoutModule } from './layout/layout.module';
     DelonModule.forRoot(),
     CoreModule,
     SharedModule,
+
     LayoutModule,
     RoutesModule,
     ...I18NSERVICE_MODULES,

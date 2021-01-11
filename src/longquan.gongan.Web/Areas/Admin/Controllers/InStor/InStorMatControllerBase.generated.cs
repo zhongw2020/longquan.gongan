@@ -37,7 +37,7 @@ using OSharp.Security;
 using longquan.gongan.InStor;
 using longquan.gongan.InStor.Dtos;
 using longquan.gongan.InStor.Entities;
-
+using longquan.gongan.Common;
 
 namespace longquan.gongan.Web.Areas.Admin.Controllers
 {
@@ -48,6 +48,9 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
     [Description("管理-资产入库信息")]
     public abstract class InStorMatControllerBase : AdminApiController
     {
+
+        private SqlHelper sq = new SqlHelper();
+        private string ConnectionString = "Server=.\\SQLZHONG;Database=gongan;User ID=sa;Password=TengKun777;MultipleActiveResultSets=true";
         /// <summary>
         /// 初始化一个<see cref="InStorMatController"/>类型的新实例
         /// </summary>
@@ -82,10 +85,8 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
 
             Expression<Func<InStorMat, bool>> predicate = FilterService.GetExpression<InStorMat>(request.FilterGroup);
             var page = InStorContract.InStorMats.ToPage<InStorMat, InStorMatOutputDto>(predicate, request.PageCondition);
-
             return page.ToPageData();
         }
-        
         /// <summary>
         /// 新增资产入库信息
         /// </summary>
@@ -119,7 +120,29 @@ namespace longquan.gongan.Web.Areas.Admin.Controllers
             OperationResult result = await InStorContract.UpdateInStorMats(dtos);
             return result.ToAjaxResult();
         }
-        
+
+        /// <summary>
+        /// 更新资产入库信息
+        /// </summary>
+        /// <param name="dtos">资产入库信息输入DTO</param>
+        /// <returns>JSON操作结果</returns>
+        [HttpPost]
+        [ModuleInfo]
+        [DependOnFunction("Read")]
+        [ServiceFilter(typeof(UnitOfWorkAttribute))]
+        [Description("更新报废")]
+        public void UpdateBaofei(InStorMatInputDto[] dtos)
+        {
+            Check.NotNull(dtos, nameof(dtos));
+            
+            foreach (InStorMatInputDto dto in dtos)
+            {
+                string sql = @"update InStor_InStorMat set Usage='"+ dto.Usage+ "' where MatNo='"+ dto.MatNo+ "' ";
+                int i = sq.Update_Sqlserver(ConnectionString, sql);
+            }
+
+        }
+
         /// <summary>
         /// 删除资产入库信息
         /// </summary>

@@ -185,4 +185,36 @@ export class InStorMatComponent extends STComponentBase implements OnInit {
     });
     node.value = '';
   }
+
+  importExcelBaofei(e: Event): void {
+    
+    const node = e.target as HTMLInputElement;
+    this.xlsx.import(node.files![0]).then(res => {
+      const infosbaofei = [];
+      let temp;
+      for (let i in res) {
+        temp = res[i];
+      }
+      if (temp.length > 1) {
+        temp.forEach((s, i) => {
+          if (s[i] !== null && s[i] !== '') {
+            // 从第几行开始取数据
+            if (i > 0) {
+              infosbaofei.push({
+                MatNo: s[0],
+                Usage: s[1], 
+              });
+            }
+          }
+        });
+      }
+      this.http.post<AjaxResult>(`api/admin/inStorMat/UpdateBaofei`, infosbaofei).subscribe(result => {
+        this.osharp.ajaxResult(result, () => {
+          this.st.reload();
+        });
+      });
+    });
+    node.value = '';
+    this.st.reload();
+  }
 }

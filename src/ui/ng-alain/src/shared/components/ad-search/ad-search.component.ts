@@ -40,15 +40,10 @@ export class AdSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.columns2 = this.columns;
     this.columns = new List(this.columns)
       .Where(m => m.index && m.filterable ) // TODO: date 的UI未调好，暂不过滤
       .ToArray();
-    this.columns2 = new List(this.columns2)
-      .Where(m => m.index && m.filterable && m.type=='date') // TODO: date 的UI未调好，暂不过滤
-      .ToArray();
     this.rule.Field = this.columns[0].index.toString();
-    this.rule2.Field = this.columns2[0].index.toString();
 
   }
 

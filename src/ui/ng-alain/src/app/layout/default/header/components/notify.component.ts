@@ -12,21 +12,8 @@ import { async } from '@angular/core/testing';
  */
 @Component({
   selector: 'header-notify',
-  template: `
-  <input [(ngModel)]="noticeMsg"/>
-  <button (click)="sendMsg()">发送消息</button>
-    <notice-icon
-      [data]="data"
-      [count]="count"
-      [loading]="loading"
-      btnClass="alain-default__nav-item"
-      btnIconClass="alain-default__nav-item-icon"
-      (select)="select($event)"
-      (clear)="clear($event)"
-      (popoverVisibleChange)="loadData()"
-    ></notice-icon>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: ``,
+ 
 })
 export class HeaderNotifyComponent {
   data: NoticeItem[] = [

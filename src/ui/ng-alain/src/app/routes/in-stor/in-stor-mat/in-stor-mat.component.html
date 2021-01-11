@@ -5,11 +5,18 @@
   <div>
     <button nz-button (click)="st.reload()"><i nz-icon nzType="reload" nzTheme="outline"></i>刷新</button>
     <button nz-button (click)="create()" acl="Root.Admin.InStor.InStorMat.Create"><i nz-icon type="plus-circle" theme="outline"></i>新增</button>
-    <input type="file" (change)="importExcel($event)" multiple="false" class="ml-sm" />
+
+
     <osharp-ad-search [request]="request" [columns]="columns" (submited)="search($event)"></osharp-ad-search>
   </div>
+  <hr />
+  <div>导入新增<input type="file" (change)="importExcel($event)" multiple="false" class="ml-sm" />
+  导入报废（手动刷新）<input type="file" (change)="importExcelBaofei($event)" multiple="false" class="ml-sm" />
+  </div>
   <st #st [data]="readUrl" [columns]="columns" [req]="req" [res]="res" [(pi)]="request.PageCondition.PageIndex" [(ps)]="request.PageCondition.PageSize" [page]="page" size="small"
-    [scroll]="{x:'1200px'}" multiSort (change)="change($event)" (error)="error($event)"></st>
+      [scroll]="{x:'1200px'}" multiSort (change)="change($event)" (error)="error($event)"></st>
+
+
 </nz-card>
 
 <nz-modal #modal [nzVisible]="false" [nzTitle]="editTitle" [nzClosable]="false" [nzFooter]="null">

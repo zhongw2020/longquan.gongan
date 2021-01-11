@@ -1,7 +1,7 @@
 <label style="margin-left: 8px;">搜索：</label>
 
 <nz-select [(ngModel)]="rule2.Field"  style="width:120px;" nzPlaceHolder="选择属性" >
-  <nz-option *ngFor="let column of columns2"  [nzLabel]="column.title" [nzValue]="column.index"></nz-option>
+  <nz-option *ngFor="let column of columns"  [nzLabel]="column.title" [nzValue]="column.index"></nz-option>
 </nz-select>
 
 <nz-date-picker nzShowTime [(ngModel)]="startdate" nzFormat="YYYY-MM-DD" nzPlaceHolder="开始时间" nzSize="default" style="margin-left:8px; width:190px;"></nz-date-picker>
